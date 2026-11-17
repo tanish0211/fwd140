@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Calendar | SAU Mess Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar container">
+        <a href="index.html" class="logo">SAU<span>Mess</span></a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a class="active" href="events.html">Food Calendar</a>
+            <a href="registration.html">Registration</a>
+            <a href="contact.html">Contact</a>
+            <button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button>
+        </div>
+    </nav>
+</header>
+
+<main class="container page-main">
+
+    <section class="page-heading">
+        <span class="eyebrow">PLAN YOUR MEALS</span>
+        <h1>Food Calendar</h1>
+        <p>Select any date to explore its breakfast, lunch and dinner menu.</p>
+    </section>
+
+    <section class="calendar-layout section">
+        <div class="panel calendar-panel">
+            <div class="calendar-top">
+                <button class="icon-button" id="prevMonth" type="button" aria-label="Previous month">‹</button>
+                <h2 id="monthYear">Month Year</h2>
+                <button class="icon-button" id="nextMonth" type="button" aria-label="Next month">›</button>
+            </div>
+
+            <div class="calendar-weekdays">
+                <span>Sun</span><span>Mon</span><span>Tue</span>
+                <span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+
+            <div class="calendar-days" id="calendarDays"></div>
+
+            <div class="calendar-legend">
+                <span><i class="legend-dot today-dot"></i> Today</span>
+                <span><i class="legend-dot selected-dot"></i> Selected date</span>
+            </div>
+
+            <button class="btn btn-outline full-width" id="goToday" type="button">
+                Go to Today
+            </button>
+        </div>
+
+        <div class="panel selected-menu-panel">
+            <span class="eyebrow">DAILY MENU</span>
+            <h2 id="selectedDateText">Select a date</h2>
+            <p class="muted-text">Meals planned for your selected day.</p>
+
+            <div id="selectedMeals" class="selected-meals">
+                <p class="muted-text">Choose a date from the calendar.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="weekly">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">PLAN AHEAD</span>
+                <h2>Weekly Menu</h2>
+                <p class="muted-text" id="weekRange">Select a date to view its week.</p>
+            </div>
+            <button class="btn btn-outline" id="printWeek" type="button">🖨 Print Weekly Menu</button>
+        </div>
+
+        <div class="panel filter-panel">
+            <div class="search-box">
+                <label for="menuSearch">Search food items</label>
+                <input type="search" id="menuSearch" placeholder="Search dosa, rice, paneer...">
+            </div>
+
+            <div class="filter-box">
+                <label for="foodFilter">Food preference</label>
+                <select id="foodFilter">
+                    <option value="all">All food</option>
+                    <option value="veg">Vegetarian</option>
+                    <option value="nonveg">Non-vegetarian</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="weekly-menu-wrap panel" id="weeklyMenuWrap">
+            <div id="weeklyMenu" class="weekly-menu">
+                <p class="muted-text">Loading weekly menu...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="favourites">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">YOUR SAVED DISHES</span>
+                <h2>Favourite Food Items ❤️</h2>
+                <p class="muted-text">Your saved dishes are stored in this browser.</p>
+            </div>
+        </div>
+        <div class="meal-grid" id="favouritesList">
+            <p class="muted-text">You haven't saved any favourites yet.</p>
+        </div>
+    </section>
+
+    <section class="section" id="feedback">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">YOUR OPINION MATTERS</span>
+                <h2>Rate Your Meal</h2>
+                <p class="muted-text">Share a rating for a meal you have tried.</p>
+            </div>
+        </div>
+
+        <form id="ratingForm" class="panel form-card">
+            <div class="form-group">
+                <label for="ratingFood">Food item</label>
+                <input type="text" id="ratingFood" placeholder="e.g. Paneer curry" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ratingScore">Your rating</label>
+                <select id="ratingScore" required>
+                    <option value="">Choose a rating</option>
+                    <option value="5">★★★★★ - Excellent</option>
+                    <option value="4">★★★★ - Very good</option>
+                    <option value="3">★★★ - Good</option>
+                    <option value="2">★★ - Needs improvement</option>
+                    <option value="1">★ - Poor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="ratingComment">Feedback</label>
+                <textarea id="ratingComment" rows="3" placeholder="Share your thoughts (optional)"></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Submit Rating</button>
+            <p id="ratingMessage" class="form-message" aria-live="polite"></p>
+        </form>
+
+        <div class="feedback-results">
+            <h3>Recent Feedback</h3>
+            <div id="ratingList" class="rating-list"></div>
+        </div>
+    </section>
+
+    <section class="section" id="announcements">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">STAY UPDATED</span>
+                <h2>Mess Announcements 📢</h2>
+                <p class="muted-text">Important updates for students.</p>
+            </div>
+        </div>
+        <div class="announcement-list" id="announcementList"></div>
+    </section>
+
+    <section class="section">
+        <div class="info-note">
+            <strong>Note:</strong> This website uses illustrative sample menu data.
+            Please confirm actual meals and timings with the university mess.
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-content">
+        <div>
+            <a href="index.html" class="logo footer-logo">SAU<span>Mess</span></a>
+            <p>A student-friendly mess menu information portal.</p>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Food Calendar</a>
+            <a href="registration.html">Registration</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+    <p class="copyright">© <span class="current-year"></span> SAU Mess Menu. Student Project.</p>
+</footer>
+
+</body>
+</html>

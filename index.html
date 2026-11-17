@@ -1,161 +1,150 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>SAU Central Mess - Home</title>
-
+    <title>SAU Mess Menu | Home</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-
 <body>
 
-    <!-- Header -->
-    <header id="header">
-        <h1>South Asian University - Central Mess</h1>
+<header class="site-header">
+    <nav class="navbar container">
+        <a href="index.html" class="logo">SAU<span>Mess</span></a>
 
-        <p>
-            Serving Vegetarian & Nonvegetarian Basic Meal Plans
-            Across SAARC Nations
-        </p>
-    </header>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+            ☰
+        </button>
 
-
-    <!-- Navigation Bar -->
-    <nav class="nav">
-
-        <a href="index.html">Home</a>
-
-        <a href="events.html">
-            Weekly Food Menu
-        </a>
-
-        <a href="registration.html">
-            Mess Notifications
-        </a>
-
-        <a href="contact.html">
-            Contact Mess Committee
-        </a>
-
+        <div class="nav-links" id="navLinks">
+            <a class="active" href="index.html">Home</a>
+            <a href="events.html">Food Calendar</a>
+            <a href="registration.html">Registration</a>
+            <a href="contact.html">Contact</a>
+            <button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button>
+        </div>
     </nav>
+</header>
 
-
-    <!-- Main Content -->
-    <main class="content">
-
-        <!-- Welcome Section -->
-        <section class="hero-section">
-
-            <h2>Welcome to the Official SAU Mess Portal</h2>
-
-            <p class="welcome-highlight">
-                Providing daily meal schedules, menu details,
-                and real-time mess notices for SAU students.
-            </p>
-
-        </section>
-
-
-        <!-- Latest Notification -->
-        <section class="notification">
-
-            <h3>Latest Notification</h3>
-
-            <p>
-                <strong>
-                    Special Sunday Biryani & Dessert night
-                </strong>
-                is scheduled for this week!
-            </p>
-
-        </section>
-
-
-        
-
-
-        <!-- Meal Timings -->
-        <section class="section">
-
-            <h3>Basic Meal Plan Serving Timings</h3>
-
-            <div class="timing-container">
-
-                <div class="timing-card">
-                    <h4>Breakfast</h4>
-                    <p>08:30 AM – 10:30 AM</p>
+<main>
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="eyebrow">SOUTH ASIAN UNIVERSITY</span>
+                <h1>Your Campus Food,<br><span>Made Simple.</span></h1>
+                <p>
+                    Explore the mess menu, discover upcoming meals,
+                    save your favourite dishes and stay updated with
+                    campus food announcements.
+                </p>
+                <div class="hero-buttons">
+                    <a href="events.html" class="btn btn-primary">Explore Food Calendar</a>
+                    <a href="#today-menu" class="btn btn-outline">Today's Menu</a>
                 </div>
-
-                <div class="timing-card">
-                    <h4>Lunch</h4>
-                    <p>12:30 PM – 02:30 PM</p>
-                </div>
-
-                <div class="timing-card">
-                    <h4>Dinner</h4>
-                    <p>07:30 PM – 09:30 PM</p>
-                </div>
-
             </div>
 
-            <p>
-                <strong>Location:</strong>
-                SAU Central Mess Dining Hall,
-                Main Campus, New Delhi
-            </p>
+            <div class="hero-visual">
+                <div class="food-illustration">🍱</div>
+                <div class="floating-note">Good food, better campus life!</div>
+            </div>
+        </div>
+    </section>
 
-        </section>
+    <section class="section container" id="today-menu">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">WHAT'S COOKING?</span>
+                <h2>Today's Mess Menu</h2>
+                <p id="todayDate" class="muted-text"></p>
+            </div>
+            <a href="events.html" class="text-link">View Full Calendar →</a>
+        </div>
 
+        <div class="meal-grid" id="todayMeals">
+            <p class="muted-text">Loading today's menu...</p>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section class="section">
+    <section class="section features-section">
+        <div class="container">
+            <div class="section-heading centered">
+                <span class="eyebrow">MADE FOR STUDENTS</span>
+                <h2>Everything in One Place</h2>
+                <p>Useful tools to make campus dining easier.</p>
+            </div>
 
-            <h3>About SAU Dining Services</h3>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Food Calendar</h3>
+                    <p>Check breakfast, lunch and dinner for any date.</p>
+                    <a href="events.html">Explore calendar →</a>
+                </article>
 
-            <p>
-                The SAU Mess operates under the approval of the
-                Student Mess Committee to deliver balanced,
-                hygienic, and culturally inclusive multi-cuisine
-                meals representing South Asian culinary traditions.
-            </p>
+                <article class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Favourite Meals</h3>
+                    <p>Save your favourite food items for quick access.</p>
+                    <a href="events.html#favourites">View favourites →</a>
+                </article>
 
-        </section>
+                <article class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Food Feedback</h3>
+                    <p>Rate meals and share your feedback.</p>
+                    <a href="events.html#feedback">Give feedback →</a>
+                </article>
 
+                <article class="feature-card">
+                    <div class="feature-icon">📢</div>
+                    <h3>Announcements</h3>
+                    <p>Stay informed about mess updates and special meals.</p>
+                    <a href="events.html#announcements">See updates →</a>
+                </article>
+            </div>
+        </div>
+    </section>
 
-        <!-- Quick Links -->
-        <section class="quick-links">
+    <section class="section container">
+        <div class="announcement-preview">
+            <div>
+                <span class="eyebrow">CAMPUS UPDATES</span>
+                <h2>Latest Announcements</h2>
+                <p>Check the latest mess-related information and updates.</p>
+            </div>
+            <a href="events.html#announcements" class="btn btn-primary">View Announcements</a>
+        </div>
+        <div class="announcement-list" id="homeAnnouncements"></div>
+    </section>
 
-            <h3>Explore SAU Mess</h3>
+    <section class="section container">
+        <div class="cta-banner">
+            <div>
+                <h2>Plan Your Meals Ahead!</h2>
+                <p>Explore the weekly menu and find out what's being served.</p>
+            </div>
+            <a href="events.html" class="btn btn-light">Open Food Calendar →</a>
+        </div>
+    </section>
+</main>
 
-            <a href="events.html">
-                View Weekly Food Menu
-            </a>
-
-            <a href="registration.html">
-                View Mess Notifications
-            </a>
-
-            <a href="contact.html">
-                Contact Mess Committee
-            </a>
-
-        </section>
-
-    </main>
-
-
-    <!-- Footer -->
-    <footer class="footer">
-
-        <p>
-            &copy; 2026 South Asian University Mess Committee.
-            Approved by Mess Committee.
-        </p>
-
-    </footer>
+<footer class="site-footer">
+    <div class="container footer-content">
+        <div>
+            <a href="index.html" class="logo footer-logo">SAU<span>Mess</span></a>
+            <p>A student-friendly mess menu information portal.</p>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Food Calendar</a>
+            <a href="registration.html">Registration</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+    <p class="copyright">© <span class="current-year"></span> SAU Mess Menu. Student Project.</p>
+</footer>
 
 </body>
 </html>
