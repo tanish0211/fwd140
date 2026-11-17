@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | SAU Mess Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar container">
+        <a href="index.html" class="logo">SAU<span>Mess</span></a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="events.html">Food Calendar</a>
+            <a href="registration.html">Registration</a>
+            <a class="active" href="contact.html">Contact</a>
+            <button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button>
+        </div>
+    </nav>
+</header>
+
+<main class="container page-main">
+    <section class="page-heading">
+        <span class="eyebrow">WE'RE HERE TO HELP</span>
+        <h1>Contact Us</h1>
+        <p>Have a question or suggestion? Use the form below.</p>
+    </section>
+
+    <section class="contact-layout section">
+        <div class="contact-info">
+            <div class="contact-card">
+                <span class="feature-icon">📍</span>
+                <h3>University</h3>
+                <p>South Asian University, New Delhi</p>
+            </div>
+            <div class="contact-card">
+                <span class="feature-icon">💬</span>
+                <h3>Suggestions</h3>
+                <p>Share your ideas to improve the mess menu portal.</p>
+            </div>
+            <div class="contact-card">
+                <span class="feature-icon">🕒</span>
+                <h3>Availability</h3>
+                <p>Use this portal to explore sample meal information anytime.</p>
+            </div>
+        </div>
+
+        <form id="contactForm" class="panel form-card">
+            <h2>Send a Message</h2>
+
+            <div class="form-group">
+                <label for="contactName">Your Name</label>
+                <input type="text" id="contactName" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactEmail">Email Address</label>
+                <input type="email" id="contactEmail" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactSubject">Subject</label>
+                <input type="text" id="contactSubject" placeholder="Enter subject" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contactMessage">Your Message</label>
+                <textarea id="contactMessage" rows="5" placeholder="Write your message..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <p id="contactResponse" class="form-message" aria-live="polite"></p>
+
+            <p class="small-note">
+                Demonstration only: messages are not sent to an email address or server.
+            </p>
+        </form>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-content">
+        <div>
+            <a href="index.html" class="logo footer-logo">SAU<span>Mess</span></a>
+            <p>A student-friendly mess menu information portal.</p>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Food Calendar</a>
+            <a href="registration.html">Registration</a>
+        </div>
+    </div>
+    <p class="copyright">© <span class="current-year"></span> SAU Mess Menu. Student Project.</p>
+</footer>
+
+</body>
+</html>
