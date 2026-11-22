@@ -10,127 +10,132 @@
 const weeklyMenu = {
     0: {
         breakfast: [
-            { name: "Aloo Paratha", type: "veg" },
-            { name: "Curd", type: "veg" },
-            { name: "Tea", type: "veg" }
+            { name: "Idli/Vada Sambhar", type: "veg" },
+            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
+            { name: "Tea/Milk", type: "veg" }
         ],
         lunch: [
-            { name: "Dal Tadka", type: "veg" },
-            { name: "Jeera Rice", type: "veg" },
-            { name: "Mixed Vegetable", type: "veg" }
+           { name:"Sri Lankan Chicken", type:"non-veg"},
+            { name: "Dal Tadka,Kadhai Paneer", type: "veg" },
+            { name: " Rice,Roti", type: "veg" },
+            { name: "Raita", type: "veg" }
         ],
         dinner: [
-            { name: "Paneer Curry", type: "veg" },
-            { name: "Chapati", type: "veg" },
+            { name: "Palak Sweet Corn,Chana Dal", type: "veg" },
+            { name: "Roti,Rice", type: "veg" },
             { name: "Salad", type: "veg" }
         ]
     },
 
     1: {
         breakfast: [
-            { name: "Poha", type: "veg" },
-            { name: "Banana", type: "veg" },
-            { name: "Milk", type: "veg" }
+            { name: "Bread Bhaji/Jam", type: "veg" },
+            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
+            { name: "Milk/Tea", type: "veg" }
         ],
         lunch: [
-            { name: "Rajma", type: "veg" },
-            { name: "Steamed Rice", type: "veg" },
-            { name: "Roti", type: "veg" }
+            { name: "Rajma,Cabbage(Aloo,Matar,Gajar", type: "veg" },
+            { name: "Roti,Rice", type: "veg" },
+            { name: "Raita", type: "veg" }
         ],
         dinner: [
-            { name: "Vegetable Pulao", type: "veg" },
-            { name: "Raita", type: "veg" },
-            { name: "Papad", type: "veg" }
+            { name: "Poori,Aloo-Gobhi,Urad chana dal", type: "veg" },
+            { name: "Jeera Rice,Halwa/Kheer", type: "veg" },
+            { name: "Salad", type: "veg" }
         ]
     },
 
     2: {
         breakfast: [
-            { name: "Idli", type: "veg" },
-            { name: "Sambar", type: "veg" },
-            { name: "Coconut Chutney", type: "veg" }
+            { name: "Chila", type: "veg" },
+            { name: "Cornflakes,Boiled Eggs,Banana,50 gm Sprouts,Jaggery", type: "veg" },
+            { name: "Milk/Tea", type: "veg" }
         ],
         lunch: [
-            { name: "Chole", type: "veg" },
-            { name: "Rice", type: "veg" },
-            { name: "Chapati", type: "veg" }
+           { name:"Fish curry",type:"non-veg"},
+            { name: "Tofu,Lal Masoor Dal", type: "veg" },
+            { name: "Rice,Roti", type: "veg" },
+            { name: "Raita", type: "veg" }
         ],
         dinner: [
-            { name: "Mix Veg", type: "veg" },
-            { name: "Dal Fry", type: "veg" },
-            { name: "Roti", type: "veg" }
+            { name: "Baigan Bharta,Arhar Dal", type: "veg" },
+            { name: "Rice,Roti", type: "veg" },
+            { name: "Salad", type: "veg" }
         ]
     },
 
     3: {
         breakfast: [
-            { name: "Masala Dosa", type: "veg" },
-            { name: "Sambar", type: "veg" },
-            { name: "Tea", type: "veg" }
+            { name: "Poha+Sev", type: "veg" },
+            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
+            { name: "Milk/Tea", type: "veg" }
         ],
         lunch: [
-            { name: "Kadhi Pakora", type: "veg" },
-            { name: "Rice", type: "veg" },
-            { name: "Salad", type: "veg" }
+            { name: "Chole,Kewa/Shamu Datshi", type: "veg" },
+            { name: "Rice,Roti", type: "veg" },
+            { name: "Raita", type: "veg" }
         ],
         dinner: [
-            { name: "Chicken Curry", type: "nonveg" },
-            { name: "Chapati", type: "veg" },
-            { name: "Dal", type: "veg" }
+            { name: "Aloo Soyabean/Dum aloo,Mixed Dal", type: "veg" },
+            { name: "Roti,Rice", type: "veg" },
+            { name: "Salad", type: "veg" }
         ]
     },
 
     4: {
         breakfast: [
-            { name: "Bread Omelette", type: "nonveg" },
-            { name: "Butter Toast", type: "veg" },
-            { name: "Milk", type: "veg" }
+            { name: "Uttappam,Sambhar", type: "nonveg" },
+            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
+            { name: "Milk/Tea", type: "veg" }
         ],
         lunch: [
-            { name: "Paneer Butter Masala", type: "veg" },
-            { name: "Rice", type: "veg" },
-            { name: "Roti", type: "veg" }
+           { name: "Afghani black pepper chicken",type:"non-veg"}
+            { name: " Matar Paneer,black masoor dal ", type: "veg" },
+            { name: "Rice,Roti", type: "veg" },
+            { name: "Raita", type: "veg" }
         ],
         dinner: [
-            { name: "Veg Fried Rice", type: "veg" },
-            { name: "Manchurian", type: "veg" },
-            { name: "Soup", type: "veg" }
+            { name: " Fried Rice", type: "veg" },
+            { name: "Manchurian,Arhar dal", type: "veg" },
+            { name: "Rice,Roti,Salad", type: "veg" }
         ]
     },
 
     5: {
         breakfast: [
-            { name: "Upma", type: "veg" },
-            { name: "Fruit", type: "veg" },
-            { name: "Tea", type: "veg" }
+            { name: "Chole Bhature/Bread Jam", type: "veg" },
+            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
+            { name: "Milk/Tea", type: "veg" }
         ],
         lunch: [
-            { name: "Dal Makhani", type: "veg" },
-            { name: "Rice", type: "veg" },
-            { name: "Chapati", type: "veg" }
+            { name: "Khichdi", type: "veg" },
+            { name: "Aloo fry", type: "veg" },
+            { name: "Green chutney,Raita", type: "veg" }
         ],
         dinner: [
             { name: "Egg Curry", type: "nonveg" },
-            { name: "Jeera Rice", type: "veg" },
+            { name: "lauki chana,Dal makhni", type: "veg" },
+           { name :"Rice,Roti",type:"veg"},
             { name: "Salad", type: "veg" }
         ]
     },
 
     6: {
         breakfast: [
-            { name: "Chole Bhature", type: "veg" },
-            { name: "Pickle", type: "veg" },
-            { name: "Tea", type: "veg" }
+            { name: "Aloo Paratha", type: "veg" },
+            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
+            { name: "Milk/Tea", type: "veg" }
         ],
         lunch: [
-            { name: "Veg Biryani", type: "veg" },
-            { name: "Raita", type: "veg" },
-            { name: "Salad", type: "veg" }
+            { name: "Moong dhuli palak sabji,arhar dal", type: "veg" },
+            { name: "Rice,Roti", type: "veg" },
+            { name: "Raita", type: "veg" }
         ],
         dinner: [
-            { name: "Dal Makhani", type: "veg" },
-            { name: "Naan", type: "veg" },
-            { name: "Gulab Jamun", type: "veg" }
+           { name:"chicken biryani",type:"non-veg"),
+            { name: "Veg Biryani", type: "veg" },
+            { name: "Raita,Dessert(Sweet Sevai/Gulab jamun/Shahi tukda", type: "veg" },
+            { name: "Salad", type: "veg" }
         ]
     }
 };
