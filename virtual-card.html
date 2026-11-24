@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Mess Card | SAU</title>
+  <link rel="stylesheet" href="assets/css/virtual-card.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">SAU</span>
+      <span>
+        <strong>South Asian University</strong>
+        <small>Campus Dining Services</small>
+      </span>
+    </a>
+    <a class="back-link" href="index.html">← Back to Home</a>
+  </header>
+
+  <main class="page">
+    <section class="intro">
+      <span class="eyebrow">STUDENT MEMBERSHIP</span>
+      <h1>Your Virtual <span>Mess ard</span></h1>
+      <p>Access your digital dining membership card anytime, anywhere.</p>
+    </section>
+
+    <section class="search-panel">
+      <label for="studentLookup">Find your mess card</label>
+      <div class="search-row">
+        <input
+          type="text"
+          id="studentLookup"
+          placeholder="Enter Student ID, Application ID or Card ID"
+          autocomplete="off"
+        >
+        <button id="searchButton" type="button">Find Card</button>
+      </div>
+      <p class="search-hint">Your card becomes available after your application is approved by the mess administrator.</p>
+      <p id="searchMessage" class="message" aria-live="polite"></p>
+    </section>
+
+    <section id="cardSection" class="card-section" hidden>
+      <div class="card-heading">
+        <div>
+          <span class="eyebrow">DIGITAL MEMBERSHIP</span>
+          <h2>Your SAU Mess ID</h2>
+        </div>
+        <span id="statusBadge" class="status-badge">ACTIVE</span>
+      </div>
+
+      <article class="mess-card" id="printableCard">
+        <div class="card-top">
+          <div class="card-brand">
+            <div class="card-logo">SAU</div>
+            <div>
+              <h3>SOUTH ASIAN UNIVERSITY</h3>
+              <p>CAMPUS DINING SERVICES</p>
+            </div>
+          </div>
+          <span class="card-type">VIRTUAL ID</span>
+        </div>
+
+        <div class="card-main">
+          <div class="student-info">
+            <span class="card-label">STUDENT MESS MEMBERSHIP</span>
+            <h2 id="cardName">Student Name</h2>
+
+            <div class="info-grid">
+              <div>
+                <span>STUDENT ID</span>
+                <strong id="cardStudentId">—</strong>
+              </div>
+              <div>
+                <span>CARD NUMBER</span>
+                <strong id="cardNumber">—</strong>
+              </div>
+              <div>
+                <span>MEMBERSHIP PLAN</span>
+                <strong id="cardPlan">—</strong>
+              </div>
+              <div>
+                <span>VALID UNTIL</span>
+                <strong id="cardValidity">—</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="qr-area">
+            <div class="qr-placeholder" aria-label="Decorative demo QR graphic">
+              <span class="qr-corner top-left"></span>
+              <span class="qr-corner top-right"></span>
+              <span class="qr-corner bottom-left"></span>
+              <span class="qr-pattern">SAU</span>
+            </div>
+            <small>DEMO QR</small>
+          </div>
+        </div>
+
+        <div class="card-bottom">
+          <span>OFFICIAL CAMPUS DINING MEMBERSHIP</span>
+          <strong id="cardValidityLine">MEMBERSHIP ACTIVE</strong>
+        </div>
+      </article>
+
+      <div class="card-actions">
+        <button id="printButton" class="primary-button" type="button">Print / Save as PDF</button>
+        <button id="resetButton" class="secondary-button" type="button">Search Another Card</button>
+      </div>
+
+      <p class="demo-note">
+        This is a demonstration virtual card for the student project. The QR graphic is decorative
+        and is not a scannable payment or identity QR code.
+      </p>
+    </section>
+
+    <section id="emptyState" class="empty-state">
+      <div class="empty-icon">▤</div>
+      <h2>Your digital card will appear here</h2>
+      <p>Enter your student or application ID above to check your membership.</p>
+    </section>
+
+    <section class="help-panel">
+      <h3>Need help?</h3>
+      <p>If your application has been approved but your card is not appearing, please contact the mess administration.</p>
+      <a href="contacts.html">Contact Mess Administration →</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 South Asian University · Campus Dining Services</p>
+    <span>Virtual Mess Card · Student Portal</span>
+  </footer>
+
+  <script src="assets/js/virtual-card.js"></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+
+{
+  "version": 1,
+  "month": "2026-11",
+  "weekly": {
+    "Monday": {
+      "breakfast": [
+        {"name": "Idli Sambhar", "type": "veg"},
+        {"name": "Vada", "type": "veg"},
+        {"name": "Cornflakes", "type": "veg"},
+        {"name": "Milk", "type": "veg"},
+        {"name": "Tea", "type": "veg"},
+        {"name": "Boiled Egg", "type": "nonveg"},
+        {"name": "Banana", "type": "veg"},
+        {"name": "50g Sprouts", "type": "veg"},
+        {"name": "Jaggery", "type": "veg"}
+      ],
+      "lunch": [
+        {"name": "Sri Lankan Chicken", "type": "nonveg"},
+        {"name": "Kadhai Paneer", "type": "veg"},
+        {"name": "Dal Tadka", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Raita", "type": "veg"}
+      ],
+      "dinner": [
+        {"name": "Palak Sweet Corn", "type": "veg"},
+        {"name": "Chana Dal", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Salad", "type": "veg"}
+      ]
+    },
+    "Tuesday": {
+      "breakfast": [
+        {"name": "Bread Bhaji", "type": "veg"},
+        {"name": "Bread Jam", "type": "veg"},
+        {"name": "Cornflakes", "type": "veg"},
+        {"name": "Milk", "type": "veg"},
+        {"name": "Tea", "type": "veg"},
+        {"name": "Boiled Eggs", "type": "nonveg"},
+        {"name": "Banana", "type": "veg"}
+      ],
+      "lunch": [
+        {"name": "Rajma", "type": "veg"},
+        {"name": "Cabbage, Aloo, Matar & Gajar", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Raita", "type": "veg"}
+      ],
+      "dinner": [
+        {"name": "Poori", "type": "veg"},
+        {"name": "Aloo Gobhi", "type": "veg"},
+        {"name": "Urad Chana Dal", "type": "veg"},
+        {"name": "Jeera Rice", "type": "veg"},
+        {"name": "Halwa or Kheer", "type": "veg"},
+        {"name": "Salad", "type": "veg"}
+      ]
+    },
+    "Wednesday": {
+      "breakfast": [
+        {"name": "Chilla", "type": "veg"},
+        {"name": "Cornflakes", "type": "veg"},
+        {"name": "Milk", "type": "veg"},
+        {"name": "Tea", "type": "veg"},
+        {"name": "Boiled Eggs", "type": "nonveg"},
+        {"name": "Banana", "type": "veg"},
+        {"name": "50g Sprouts", "type": "veg"},
+        {"name": "Jaggery", "type": "veg"}
+      ],
+      "lunch": [
+        {"name": "Fish Curry", "type": "nonveg"},
+        {"name": "Tofu", "type": "veg"},
+        {"name": "Lal Masoor Dal", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Raita", "type": "veg"}
+      ],
+      "dinner": [
+        {"name": "Baingan Bharta", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Arhar Dal", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Salad", "type": "veg"}
+      ]
+    },
+    "Thursday": {
+      "breakfast": [
+        {"name": "Poha with Sev", "type": "veg"},
+        {"name": "Cornflakes", "type": "veg"},
+        {"name": "Milk", "type": "veg"},
+        {"name": "Tea", "type": "veg"},
+        {"name": "Boiled Eggs", "type": "nonveg"},
+        {"name": "Banana", "type": "veg"},
+        {"name": "50g Sprouts", "type": "veg"},
+        {"name": "Jaggery", "type": "veg"}
+      ],
+      "lunch": [
+        {"name": "Chhole", "type": "veg"},
+        {"name": "Kewa Datshi", "type": "veg"},
+        {"name": "Shamu Datshi", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Raita", "type": "veg"}
+      ],
+      "dinner": [
+        {"name": "Aloo Soyabean", "type": "veg"},
+        {"name": "Dum Aloo", "type": "veg"},
+        {"name": "Mixed Dal", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Salad", "type": "veg"}
+      ]
+    },
+    "Friday": {
+      "breakfast": [
+        {"name": "Uttapam Sambhar", "type": "veg"},
+        {"name": "Cornflakes", "type": "veg"},
+        {"name": "Milk", "type": "veg"},
+        {"name": "Tea", "type": "veg"},
+        {"name": "2 Boiled Eggs", "type": "nonveg"},
+        {"name": "Orange", "type": "veg"}
+      ],
+      "lunch": [
+        {"name": "Afghani Black Pepper Chicken", "type": "nonveg"},
+        {"name": "Matar Paneer", "type": "veg"},
+        {"name": "Black Masoor Dal", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Raita", "type": "veg"}
+      ],
+      "dinner": [
+        {"name": "Fried Rice", "type": "veg"},
+        {"name": "Manchurian", "type": "veg"},
+        {"name": "Arhar Dal", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Salad", "type": "veg"}
+      ]
+    },
+    "Saturday": {
+      "breakfast": [
+        {"name": "Chole Bhature", "type": "veg"},
+        {"name": "Bread Jam", "type": "veg"},
+        {"name": "Cornflakes", "type": "veg"},
+        {"name": "Milk", "type": "veg"},
+        {"name": "Tea", "type": "veg"},
+        {"name": "2 Boiled Eggs", "type": "nonveg"},
+        {"name": "Orange", "type": "veg"}
+      ],
+      "lunch": [
+        {"name": "Khichdi", "type": "veg"},
+        {"name": "Aloo Fry", "type": "veg"},
+        {"name": "Green Chutney", "type": "veg"},
+        {"name": "Raita", "type": "veg"}
+      ],
+      "dinner": [
+        {"name": "Egg Curry", "type": "nonveg"},
+        {"name": "Lauki Chana", "type": "veg"},
+        {"name": "Dal Makhani", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Salad", "type": "veg"}
+      ]
+    },
+    "Sunday": {
+      "breakfast": [
+        {"name": "Aloo Paratha", "type": "veg"},
+        {"name": "Cornflakes", "type": "veg"},
+        {"name": "Milk", "type": "veg"},
+        {"name": "Tea", "type": "veg"},
+        {"name": "2 Boiled Eggs", "type": "nonveg"},
+        {"name": "Orange", "type": "veg"}
+      ],
+      "lunch": [
+        {"name": "Moong Dhuli Palak Sabji", "type": "veg"},
+        {"name": "Arhar Dal", "type": "veg"},
+        {"name": "Rice", "type": "veg"},
+        {"name": "Roti", "type": "veg"},
+        {"name": "Salad", "type": "veg"}
+      ],
+      "dinner": [
+        {"name": "Veg Biryani", "type": "veg"},
+        {"name": "Chicken Biryani", "type": "nonveg"},
+        {"name": "Raita", "type": "veg"},
+        {"name": "Dessert", "type": "veg"}
+      ]
+    }
+  },
+  "days": {},
+  "announcements": [
+    {
+      "title": "Welcome to SAU Dining",
+      "message": "Explore the daily menu, meal timings and dining services through the campus dining website.",
+      "date": "Campus update"
+    },
+    {
+      "title": "Student Suggestions",
+      "message": "Students can share their feedback and suggestions using the feedback section.",
+      "date": "Student notice"
+    }
+  ]
+}

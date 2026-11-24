@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAU Dining | Admin Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+<div class="admin-login-screen" id="loginScreen">
+<div class="login-card">
+<div class="login-brand">
+<div class="admin-logo">S</div>
+<h1>SAU Dining</h1>
+<p>Administration Portal</p>
+</div>
+
+<form id="adminLoginForm">
+<label for="adminUsername">Username</label>
+<input id="adminUsername" autocomplete="username" required>
+
+<label for="adminPassword">Password</label>
+<input id="adminPassword" type="password" autocomplete="current-password" required>
+
+<button class="admin-button primary full" type="submit">Sign in</button>
+<p id="loginError" class="admin-error"></p>
+</form>
+
+<div class="login-note">
+Demo credentials: <strong>admin</strong> / <strong>sau2026</strong>
+</div>
+</div>
+</div>
+
+<div class="admin-app hidden" id="adminApp">
+
+<aside class="admin-sidebar">
+<div class="admin-sidebar-brand">
+<div class="admin-logo">S</div>
+<div><strong>SAU Dining</strong><small>Admin Console</small></div>
+</div>
+
+<nav class="admin-navigation">
+<button class="admin-nav active" data-panel="overview">▦ Overview</button>
+<button class="admin-nav" data-panel="menu">☷ Menu Manager</button>
+<button class="admin-nav" data-panel="announcements">✦ Announcements</button>
+<button class="admin-nav" data-panel="data">▤ Student Data</button>
+</nav>
+
+<div class="admin-sidebar-bottom">
+<a href="index.html" class="admin-nav">↗ View Website</a>
+<button id="adminLogout" class="admin-nav">⇥ Sign Out</button>
+</div>
+</aside>
+
+<main class="admin-main">
+
+<header class="admin-header">
+<div>
+<span class="admin-kicker">ADMINISTRATION</span>
+<h1 id="adminPageTitle">Dashboard Overview</h1>
+</div>
+<div class="admin-header-actions">
+<button class="admin-button outline" id="exportMenuBtn">Export Menu JSON</button>
+<button class="admin-button primary" id="saveDraftBtn">Save Changes</button>
+</div>
+</header>
+
+<div class="admin-notice">
+<strong>Local editing mode.</strong>
+Changes are stored in this browser. Export your menu JSON and replace
+the website's menu.json to publish updates.
+</div>
+
+<!-- OVERVIEW -->
+<section class="admin-panel active" id="panel-overview">
+<div class="admin-stat-grid">
+<div class="admin-stat-card"><span>Menu Days</span><strong id="statMenuDays">7</strong><small>Weekly menu structure</small></div>
+<div class="admin-stat-card"><span>Announcements</span><strong id="statAnnouncements">0</strong><small>Saved notices</small></div>
+<div class="admin-stat-card"><span>Feedback</span><strong id="statFeedback">0</strong><small>Browser records</small></div>
+<div class="admin-stat-card"><span>Questions</span><strong id="statQuestions">0</strong><small>Student submissions</small></div>
+</div>
+
+<div class="admin-card">
+<div class="admin-card-heading">
+<div><h2>Quick actions</h2><p>Manage dining information from here.</p></div>
+</div>
+<div class="admin-quick-actions">
+<button class="admin-quick-action" data-goto="menu"><span>☷</span><strong>Edit Menu</strong><small>Update dishes and meals</small></button>
+<button class="admin-quick-action" data-goto="announcements"><span>✦</span><strong>Announcements</strong><small>Create dining notices</small></button>
+<button class="admin-quick-action" data-goto="data"><span>▤</span><strong>Student Records</strong><small>Review local submissions</small></button>
+</div>
+</div>
+
+<div class="admin-card">
+<div class="admin-card-heading"><div><h2>Meal timings & rates</h2><p>Displayed on the student website.</p></div></div>
+<div class="admin-rate-grid">
+<div><strong>Breakfast</strong><span>8:30 AM – 10:30 AM</span><b>₹50</b></div>
+<div><strong>Lunch</strong><span>12:30 PM – 2:30 PM</span><b>₹70–₹80</b></div>
+<div><strong>Dinner</strong><span>7:30 PM – 9:30 PM</span><b>₹70–₹80</b></div>
+</div>
+</div>
+
+<div class="admin-card">
+<div class="admin-card-heading"><div><h2>Menu data status</h2><p>Loaded from menu.json or saved local draft.</p></div></div>
+<p id="menuStatus" class="admin-status">Loading menu...</p>
+<button id="reloadMenuBtn" class="admin-button outline">Reload Original menu.json</button>
+</div>
+</section>
+
+<!-- MENU MANAGER -->
+<section class="admin-panel" id="panel-menu">
+
+<div class="admin-card">
+<div class="admin-card-heading">
+<div><h2>Menu editor</h2><p>Select a date and meal to manage dishes.</p></div>
+</div>
+
+<div class="admin-form-grid">
+<div>
+<label for="adminMenuDate">Menu date</label>
+<input type="date" id="adminMenuDate">
+</div>
+
+<div>
+<label for="adminMealSelect">Meal</label>
+<select id="adminMealSelect">
+<option value="breakfast">Breakfast</option>
+<option value="lunch">Lunch</option>
+<option value="dinner">Dinner</option>
+</select>
+</div>
+
+<div class="admin-form-grid">
+<div>
+<label for="adminDishName">Dish name</label>
+<input id="adminDishName" placeholder="Enter dish name">
+</div>
+<div>
+<label for="adminDishType">Dish category</label>
+<select id="adminDishType">
+<option value="veg">Vegetarian</option>
+<option value="nonveg">Non-vegetarian</option>
+</select>
+</div>
+</div>
+
+<button id="addDishBtn" class="admin-button primary">+ Add Dish</button>
+<button id="copyWeekBtn" class="admin-button outline">Fill selected month from weekly menu</button>
+<button id="clearDayBtn" class="admin-button danger">Clear selected meal</button>
+</div>
+
+<div class="admin-card">
+<div class="admin-card-heading">
+<div><h2>Selected menu</h2><p>Remove dishes using the delete control.</p></div>
+</div>
+<div id="adminDishList" class="admin-dish-list"></div>
+</div>
+
+<div class="admin-card">
+<div class="admin-card-heading">
+<div><h2>Menu data tools</h2><p>Import or export JSON files.</p></div>
+</div>
+<div class="admin-tools">
+<label class="admin-button outline file-button">
+Import menu JSON
+<input type="file" id="importMenuFile" accept=".json,application/json">
+</label>
+<button id="exportMenuBtn" class="admin-button outline">Download menu.json</button>
+<button id="resetDraftBtn" class="admin-button danger">Delete local draft</button>
+</div>
+</div>
+
+</section>
+
+<!-- ANNOUNCEMENTS -->
+<section class="admin-panel" id="panel-announcements">
+
+<div class="admin-card">
+<div class="admin-card-heading"><div><h2>Create announcement</h2><p>Write a message to display on the homepage.</p></div></div>
+
+<form id="announcementForm">
+<label for="announcementTitle">Announcement title</label>
+<input id="announcementTitle" required placeholder="Enter announcement title">
+
+<label for="announcementMessage">Announcement message</label>
+<textarea id="announcementMessage" rows="4" required placeholder="Write your message"></textarea>
+
+<label for="announcementDate">Display date</label>
+<input id="announcementDate" placeholder="Campus update">
+
+<button class="admin-button primary" type="submit">Add announcement</button>
+</form>
+</div>
+
+<div class="admin-card">
+<div class="admin-card-heading"><div><h2>Current announcements</h2></div></div>
+<div id="adminAnnouncementList"></div>
+</div>
+</section>
+
+<!-- DATA -->
+<section class="admin-panel" id="panel-data">
+<div class="admin-card">
+<div class="admin-card-heading"><div><h2>Student data</h2><p>Records stored in this browser only.</p></div></div>
+</div>
+
+<div class="admin-data-tabs">
+<button class="admin-data-tab active" data-data-type="feedback">Feedback</button>
+<button class="admin-data-tab" data-data-type="registrations">Registrations</button>
+<button class="admin-data-tab" data-data-type="questions">Questions</button>
+<button class="admin-data-tab" data-data-type="messApplications">Mess Applications</button>
+<button class="admin-data-tab" data-data-type="contacts">Contact Messages</button>
+</div>
+
+<div class="admin-card">
+<div id="adminRecords"></div>
+<button class="admin-button outline" id="exportRecordsBtn">Export displayed data</button>
+<button class="admin-button danger" id="clearRecordsBtn">Clear displayed records</button>
+</div>
+</section>
+
+</main>
+</div>
+
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

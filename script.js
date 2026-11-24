@@ -1,971 +1,903 @@
 
-/* ==========================================
-   SAU MESS MENU - JAVASCRIPT
-========================================== */
+/* ==========================================================
+   SAU DINING — STUDENT WEBSITE JAVASCRIPT
+   ========================================================== */
 
-/* 1. SAMPLE WEEKLY FOOD MENU
-   0 = Sunday, 1 = Monday ... 6 = Saturday
-*/
+const SAU = {
+  menu: null,
+  selectedDate: new Date(),
+  calendarDate: new Date(),
+  activeMealFilter: "all",
+  searchText: "",
+  favouritesOnly: false,
 
-const weeklyMenu = {
-    0: {
-        breakfast: [
-            { name: "Idli/Vada Sambhar", type: "veg" },
-            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
-            { name: "Tea/Milk", type: "veg" }
-        ],
-        lunch: [
-           { name:"Sri Lankan Chicken", type:"non-veg"},
-            { name: "Dal Tadka,Kadhai Paneer", type: "veg" },
-            { name: " Rice,Roti", type: "veg" },
-            { name: "Raita", type: "veg" }
-        ],
-        dinner: [
-            { name: "Palak Sweet Corn,Chana Dal", type: "veg" },
-            { name: "Roti,Rice", type: "veg" },
-            { name: "Salad", type: "veg" }
-        ]
+  storage: {
+    favourites: "sauDiningFavourites",
+    ratings: "sauDiningRatings",
+    feedback: "sauDiningFeedback",
+    registrations: "sauStudentRegistrations",
+    contacts: "sauContactMessages",
+    questions: "sauStudentQuestions",
+    theme: "sauDiningTheme"
+  },
+
+  meals: {
+    breakfast: {
+      name: "Breakfast",
+      start: "08:30",
+      end: "10:30",
+      display: "8:30 AM – 10:30 AM",
+      price: 50,
+      icon: "☀"
     },
-
-    1: {
-        breakfast: [
-            { name: "Bread Bhaji/Jam", type: "veg" },
-            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
-            { name: "Milk/Tea", type: "veg" }
-        ],
-        lunch: [
-            { name: "Rajma,Cabbage(Aloo,Matar,Gajar", type: "veg" },
-            { name: "Roti,Rice", type: "veg" },
-            { name: "Raita", type: "veg" }
-        ],
-        dinner: [
-            { name: "Poori,Aloo-Gobhi,Urad chana dal", type: "veg" },
-            { name: "Jeera Rice,Halwa/Kheer", type: "veg" },
-            { name: "Salad", type: "veg" }
-        ]
+    lunch: {
+      name: "Lunch",
+      start: "12:30",
+      end: "14:30",
+      display: "12:30 PM – 2:30 PM",
+      price: 70,
+      icon: "◉"
     },
-
-    2: {
-        breakfast: [
-            { name: "Chila", type: "veg" },
-            { name: "Cornflakes,Boiled Eggs,Banana,50 gm Sprouts,Jaggery", type: "veg" },
-            { name: "Milk/Tea", type: "veg" }
-        ],
-        lunch: [
-           { name:"Fish curry",type:"non-veg"},
-            { name: "Tofu,Lal Masoor Dal", type: "veg" },
-            { name: "Rice,Roti", type: "veg" },
-            { name: "Raita", type: "veg" }
-        ],
-        dinner: [
-            { name: "Baigan Bharta,Arhar Dal", type: "veg" },
-            { name: "Rice,Roti", type: "veg" },
-            { name: "Salad", type: "veg" }
-        ]
-    },
-
-    3: {
-        breakfast: [
-            { name: "Poha+Sev", type: "veg" },
-            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
-            { name: "Milk/Tea", type: "veg" }
-        ],
-        lunch: [
-            { name: "Chole,Kewa/Shamu Datshi", type: "veg" },
-            { name: "Rice,Roti", type: "veg" },
-            { name: "Raita", type: "veg" }
-        ],
-        dinner: [
-            { name: "Aloo Soyabean/Dum aloo,Mixed Dal", type: "veg" },
-            { name: "Roti,Rice", type: "veg" },
-            { name: "Salad", type: "veg" }
-        ]
-    },
-
-    4: {
-        breakfast: [
-            { name: "Uttappam,Sambhar", type: "nonveg" },
-            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
-            { name: "Milk/Tea", type: "veg" }
-        ],
-        lunch: [
-           { name: "Afghani black pepper chicken",type:"non-veg"}
-            { name: " Matar Paneer,black masoor dal ", type: "veg" },
-            { name: "Rice,Roti", type: "veg" },
-            { name: "Raita", type: "veg" }
-        ],
-        dinner: [
-            { name: " Fried Rice", type: "veg" },
-            { name: "Manchurian,Arhar dal", type: "veg" },
-            { name: "Rice,Roti,Salad", type: "veg" }
-        ]
-    },
-
-    5: {
-        breakfast: [
-            { name: "Chole Bhature/Bread Jam", type: "veg" },
-            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
-            { name: "Milk/Tea", type: "veg" }
-        ],
-        lunch: [
-            { name: "Khichdi", type: "veg" },
-            { name: "Aloo fry", type: "veg" },
-            { name: "Green chutney,Raita", type: "veg" }
-        ],
-        dinner: [
-            { name: "Egg Curry", type: "nonveg" },
-            { name: "lauki chana,Dal makhni", type: "veg" },
-           { name :"Rice,Roti",type:"veg"},
-            { name: "Salad", type: "veg" }
-        ]
-    },
-
-    6: {
-        breakfast: [
-            { name: "Aloo Paratha", type: "veg" },
-            { name: "Cornflakes,Boiled Eggs,Banana", type: "veg" },
-            { name: "Milk/Tea", type: "veg" }
-        ],
-        lunch: [
-            { name: "Moong dhuli palak sabji,arhar dal", type: "veg" },
-            { name: "Rice,Roti", type: "veg" },
-            { name: "Raita", type: "veg" }
-        ],
-        dinner: [
-           { name:"chicken biryani",type:"non-veg"),
-            { name: "Veg Biryani", type: "veg" },
-            { name: "Raita,Dessert(Sweet Sevai/Gulab jamun/Shahi tukda", type: "veg" },
-            { name: "Salad", type: "veg" }
-        ]
+    dinner: {
+      name: "Dinner",
+      start: "19:30",
+      end: "21:30",
+      display: "7:30 PM – 9:30 PM",
+      price: 70,
+      icon: "☾"
     }
+  }
 };
 
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => document.querySelectorAll(selector);
 
-/* 2. SAMPLE ANNOUNCEMENTS */
-
-const announcements = [
-    {
-        title: "Weekly Menu Update",
-        date: "Sample announcement",
-        message: "Students can explore the weekly breakfast, lunch and dinner menu through the food calendar."
-    },
-    {
-        title: "Share Your Food Feedback",
-        date: "Student feedback",
-        message: "Use the rating section to share your opinion about meals and suggest improvements."
-    },
-    {
-        title: "Special Meal Information",
-        date: "Mess notice",
-        message: "Check the calendar regularly for sample special meal entries and menu updates."
-    },
-    {
-        title: "Food Preference Filter",
-        date: "Website feature",
-        message: "Use the vegetarian and non-vegetarian filter to find suitable food items."
-    }
-];
-
-
-/* 3. LOCAL STORAGE HELPERS */
-
-function readStorage(key, fallback) {
-    try {
-        const saved = localStorage.getItem(key);
-        return saved ? JSON.parse(saved) : fallback;
-    } catch (error) {
-        return fallback;
-    }
+function getLocalDateKey(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
 }
 
-function saveStorage(key, value) {
-    try {
-        localStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-        console.warn("Could not save browser data:", error);
-    }
+function getStored(key, fallback = []) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) ?? fallback;
+  } catch {
+    return fallback;
+  }
 }
 
-let favourites = readStorage("sauFavourites", []);
-let ratings = readStorage("sauRatings", []);
+function saveStored(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
 
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[character]));
+}
 
-/* 4. DATE HELPERS */
+function showToast(message) {
+  const container = $("#toastContainer");
+  if (!container) return;
 
-function dateKey(date) {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.textContent = message;
+  container.appendChild(toast);
 
-    return `${year}-${month}-${day}`;
+  setTimeout(() => toast.remove(), 3200);
 }
 
 function formatDate(date) {
-    return date.toLocaleDateString("en-IN", {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-    });
+  return date.toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
+
+function todayKey() {
+  return getLocalDateKey(new Date());
+}
+
+function getWeekday(date) {
+  return date.toLocaleDateString("en-US", { weekday: "long" });
+}
+
+function initShared() {
+  const year = $("#footerYear");
+  if (year) year.textContent = new Date().getFullYear();
+
+  const menuButton = $("#mobileMenuBtn");
+  const nav = $("#mainNav");
+
+  menuButton?.addEventListener("click", () => {
+    nav?.classList.toggle("open");
+  });
+
+  nav?.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => nav.classList.remove("open"));
+  });
+
+  initTheme();
+  initFeedbackForm();
+  initRegistrationForm();
+  initContactForm();
+  initEventsPage();
+  initFaqForm();
+}
+
+function initTheme() {
+  const button = $("#themeToggle");
+  const saved = localStorage.getItem(SAU.storage.theme);
+
+  if (saved === "dark") document.body.classList.add("dark-mode");
+
+  button?.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    const mode = document.body.classList.contains("dark-mode")
+      ? "dark"
+      : "light";
+
+    localStorage.setItem(SAU.storage.theme, mode);
+  });
+}
+
+/* ==========================================================
+   SMART MEAL TIMING
+   ========================================================== */
+
+function getMealSchedule(date = new Date()) {
+  const schedule = [];
+
+  Object.entries(SAU.meals).forEach(([key, meal]) => {
+    const [hour, minute] = meal.start.split(":").map(Number);
+    const start = new Date(date);
+    start.setHours(hour, minute, 0, 0);
+
+    const [endHour, endMinute] = meal.end.split(":").map(Number);
+    const end = new Date(date);
+    end.setHours(endHour, endMinute, 0, 0);
+
+    schedule.push({ key, meal, start, end });
+  });
+
+  return schedule;
+}
+
+function getNextMeal(now = new Date()) {
+  const todaySchedule = getMealSchedule(now);
+
+  for (const item of todaySchedule) {
+    if (now < item.start) return item;
+  }
+
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  return getMealSchedule(tomorrow)[0];
+}
+
+function getCurrentMeal(now = new Date()) {
+  const schedule = getMealSchedule(now);
+
+  return schedule.find(item => now >= item.start && now < item.end) || null;
+}
+
+function getCountdown(target) {
+  const difference = target.getTime() - Date.now();
+
+  if (difference <= 0) return "Starting soon";
+
+  const totalSeconds = Math.floor(difference / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (days > 0) return `${days}d ${hours}h ${minutes}m`;
+  if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
+  return `${minutes}m ${seconds}s`;
+}
+
+function updateNextMeal() {
+  const next = getNextMeal();
+  const current = getCurrentMeal();
+
+  const name = $("#nextMealName");
+  const timing = $("#nextMealTiming");
+  const countdown = $("#nextMealCountdown");
+  const icon = $("#nextMealIcon");
+  const status = $("#mealStatus");
+  const heroDate = $("#heroDate");
+
+  if (name) name.textContent = next.meal.name;
+  if (timing) timing.textContent = next.meal.display;
+  if (countdown) {
+    countdown.textContent = `Starts in ${getCountdown(next.start)}`;
+  }
+  if (icon) icon.textContent = next.meal.icon;
+
+  if (status) {
+    status.textContent = current
+      ? `${current.meal.name} is currently being served`
+      : "Next meal";
+  }
+
+  if (heroDate) heroDate.textContent = formatDate(new Date());
+
+  $$(".timing-card").forEach(card => {
+    card.classList.remove("current-meal");
+    if (current && card.dataset.meal === current.key) {
+      card.classList.add("current-meal");
+    }
+  });
+}
+
+/* ==========================================================
+   MENU DATA
+   ========================================================== */
+
+async function loadMenu() {
+  try {
+    const response = await fetch("menu.json");
+
+    if (!response.ok) throw new Error("Menu file could not load");
+
+    SAU.menu = await response.json();
+    renderAnnouncements();
+    renderCalendar();
+    renderSelectedMenu();
+  } catch (error) {
+    console.error(error);
+
+    const container = $("#menuMealsContainer");
+    if (container) {
+      container.innerHTML = `
+        <div class="empty-state">
+          Menu could not be loaded. Please run the website using VS Code Live Server.
+        </div>`;
+    }
+  }
 }
 
 function getMenuForDate(date) {
-    return weeklyMenu[date.getDay()];
+  if (!SAU.menu) return {};
+
+  const dateKey = getLocalDateKey(date);
+  const weekday = getWeekday(date);
+
+  const weeklyMenu = SAU.menu.weekly?.[weekday] || {};
+  const dailyOverride = SAU.menu.days?.[dateKey] || {};
+
+  return {
+    breakfast: dailyOverride.breakfast ?? weeklyMenu.breakfast ?? [],
+    lunch: dailyOverride.lunch ?? weeklyMenu.lunch ?? [],
+    dinner: dailyOverride.dinner ?? weeklyMenu.dinner ?? []
+  };
 }
 
-function getMealIcon(meal) {
-    if (meal === "breakfast") return "🌅";
-    if (meal === "lunch") return "☀️";
-    return "🌙";
-}
-
-function getMealLabel(meal) {
-    return meal.charAt(0).toUpperCase() + meal.slice(1);
-}
-
-
-/* 5. CREATE FOOD CARD */
-
-function createMealCard(mealName, items, mealDate, mealType) {
-    const card = document.createElement("article");
-    card.className = "meal-card";
-
-    const list = items.map(item => `
-        <li>
-            <span class="food-dot ${item.type}"></span>
-            ${item.name}
-        </li>
-    `).join("");
-
-    card.innerHTML = `
-        <div class="meal-card-top">
-            <span class="meal-icon">${getMealIcon(mealType)}</span>
-            <span class="eyebrow">${mealName}</span>
-        </div>
-
-        <h3>${getMealLabel(mealType)}</h3>
-
-        <ul>${list}</ul>
-
-        <div class="meal-card-bottom">
-            <span>${formatDate(mealDate)}</span>
-            <span>${items.length} items</span>
-        </div>
-    `;
-
-    return card;
-}
-
-
-/* 6. HOME PAGE - TODAY'S MENU */
-
-function renderTodayMenu() {
-    const container = document.getElementById("todayMeals");
-    const dateElement = document.getElementById("todayDate");
-
-    if (!container || !dateElement) return;
-
-    const today = new Date();
-    const menu = getMenuForDate(today);
-
-    dateElement.textContent = formatDate(today);
-    container.innerHTML = "";
-
-    ["breakfast", "lunch", "dinner"].forEach(meal => {
-        const card = createMealCard(
-            formatDate(today),
-            menu[meal],
-            today,
-            meal
-        );
-
-        container.appendChild(card);
-    });
-}
-
-
-/* 7. FOOD CALENDAR */
-
-const today = new Date();
-
-let displayedMonth = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    1
-);
-
-let selectedDate = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate()
-);
+/* ==========================================================
+   CALENDAR
+   ========================================================== */
 
 function renderCalendar() {
-    const calendar = document.getElementById("calendarDays");
-    const monthTitle = document.getElementById("monthYear");
+  const grid = $("#calendarGrid");
+  const title = $("#calendarMonth");
 
-    if (!calendar || !monthTitle) return;
+  if (!grid || !title) return;
 
-    const year = displayedMonth.getFullYear();
-    const month = displayedMonth.getMonth();
+  const year = SAU.calendarDate.getFullYear();
+  const month = SAU.calendarDate.getMonth();
 
-    monthTitle.textContent = displayedMonth.toLocaleDateString("en-IN", {
-        month: "long",
-        year: "numeric"
-    });
+  title.textContent = SAU.calendarDate.toLocaleDateString("en-IN", {
+    month: "long",
+    year: "numeric"
+  });
 
-    calendar.innerHTML = "";
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const offset = (firstDay.getDay() + 6) % 7;
+  const today = todayKey();
+  const selected = getLocalDateKey(SAU.selectedDate);
 
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const previousMonthDays = new Date(year, month, 0).getDate();
+  grid.innerHTML = "";
 
-    const totalCells = 42;
+  for (let i = 0; i < offset; i++) {
+    const empty = document.createElement("div");
+    empty.className = "calendar-day empty";
+    grid.appendChild(empty);
+  }
 
-    for (let i = 0; i < totalCells; i++) {
-        let date;
+  for (let day = 1; day <= lastDay.getDate(); day++) {
+    const date = new Date(year, month, day);
+    const key = getLocalDateKey(date);
 
-        if (i < firstDay) {
-            date = new Date(
-                year,
-                month - 1,
-                previousMonthDays - firstDay + i + 1
-            );
-        } else if (i >= firstDay + daysInMonth) {
-            date = new Date(
-                year,
-                month + 1,
-                i - firstDay - daysInMonth + 1
-            );
-        } else {
-            date = new Date(year, month, i - firstDay + 1);
-        }
+    const button = document.createElement("button");
+    button.className = "calendar-day";
+    button.type = "button";
 
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "calendar-day";
-        button.textContent = date.getDate();
+    if (key === today) button.classList.add("today");
+    if (key === selected) button.classList.add("selected");
 
-        if (date.getMonth() !== month) {
-            button.classList.add("other-month");
-        }
-
-        if (dateKey(date) === dateKey(today)) {
-            button.classList.add("today");
-        }
-
-        if (dateKey(date) === dateKey(selectedDate)) {
-            button.classList.add("selected");
-        }
-
-        button.setAttribute("aria-label", formatDate(date));
-        button.setAttribute(
-            "aria-pressed",
-            dateKey(date) === dateKey(selectedDate) ? "true" : "false"
-        );
-
-        button.addEventListener("click", () => {
-            selectedDate = new Date(
-                date.getFullYear(),
-                date.getMonth(),
-                date.getDate()
-            );
-
-            displayedMonth = new Date(
-                date.getFullYear(),
-                date.getMonth(),
-                1
-            );
-
-            renderCalendar();
-            renderSelectedMenu();
-            renderWeeklyMenu();
-        });
-
-        calendar.appendChild(button);
-    }
-}
-
-
-/* 8. SHOW SELECTED DATE'S BREAKFAST, LUNCH AND DINNER */
-
-function renderSelectedMenu() {
-    const heading = document.getElementById("selectedDateText");
-    const container = document.getElementById("selectedMeals");
-
-    if (!heading || !container) return;
-
-    heading.textContent = formatDate(selectedDate);
-    container.innerHTML = "";
-
-    const menu = getMenuForDate(selectedDate);
-
-    ["breakfast", "lunch", "dinner"].forEach(meal => {
-        const box = document.createElement("div");
-        box.className = "selected-meal";
-
-        const items = menu[meal].map(item => {
-            return item.name +
-                (item.type === "nonveg" ? " (Non-veg)" : " (Veg)");
-        }).join(", ");
-
-        const title = document.createElement("h3");
-        title.textContent = `${getMealIcon(meal)} ${getMealLabel(meal)}`;
-
-        const description = document.createElement("p");
-        description.textContent = items;
-
-        box.append(title, description);
-        container.appendChild(box);
-    });
-}
-
-
-/* 9. CALENDAR NAVIGATION */
-
-const previousButton = document.getElementById("prevMonth");
-const nextButton = document.getElementById("nextMonth");
-const todayButton = document.getElementById("goToday");
-
-if (previousButton) {
-    previousButton.addEventListener("click", () => {
-        displayedMonth = new Date(
-            displayedMonth.getFullYear(),
-            displayedMonth.getMonth() - 1,
-            1
-        );
-        renderCalendar();
-    });
-}
-
-if (nextButton) {
-    nextButton.addEventListener("click", () => {
-        displayedMonth = new Date(
-            displayedMonth.getFullYear(),
-            displayedMonth.getMonth() + 1,
-            1
-        );
-        renderCalendar();
-    });
-}
-
-if (todayButton) {
-    todayButton.addEventListener("click", () => {
-        selectedDate = new Date(
-            today.getFullYear(),
-            today.getMonth(),
-            today.getDate()
-        );
-
-        displayedMonth = new Date(
-            today.getFullYear(),
-            today.getMonth(),
-            1
-        );
-
-        renderCalendar();
-        renderSelectedMenu();
-        renderWeeklyMenu();
-    });
-}
-
-
-/* 10. WEEKLY MENU */
-
-function getWeekDates(date) {
-    const start = new Date(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate()
-    );
-
-    const day = start.getDay();
-
-    // Start the week on Monday.
-    const difference = day === 0 ? -6 : 1 - day;
-    start.setDate(start.getDate() + difference);
-
-    return Array.from({ length: 7 }, (_, index) => {
-        const nextDate = new Date(start);
-        nextDate.setDate(start.getDate() + index);
-        return nextDate;
-    });
-}
-
-function renderWeeklyMenu() {
-    const container = document.getElementById("weeklyMenu");
-    const range = document.getElementById("weekRange");
-
-    if (!container || !range) return;
-
-    const dates = getWeekDates(selectedDate);
-    const first = dates[0];
-    const last = dates[6];
-
-    range.textContent = `${formatDate(first)} – ${formatDate(last)}`;
-
-    const search = (
-        document.getElementById("menuSearch")?.value || ""
-    ).trim().toLowerCase();
-
-    const filter = document.getElementById("foodFilter")?.value || "all";
-
-    let table = `
-        <table class="weekly-table">
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>Breakfast</th>
-                    <th>Lunch</th>
-                    <th>Dinner</th>
-                </tr>
-            </thead>
-            <tbody>
+    button.innerHTML = `
+      <span class="day-number">${day}</span>
+      <span class="day-dot"></span>
     `;
 
-    let matchingRows = 0;
-
-    dates.forEach(date => {
-        const menu = getMenuForDate(date);
-
-        const filteredMeals = {};
-
-        ["breakfast", "lunch", "dinner"].forEach(meal => {
-            filteredMeals[meal] = menu[meal].filter(item => {
-                const matchesSearch = item.name.toLowerCase().includes(search);
-                const matchesType = filter === "all" || item.type === filter;
-
-                return matchesSearch && matchesType;
-            });
-        });
-
-        const rowHasItems = Object.values(filteredMeals).some(
-            items => items.length > 0
-        );
-
-        if (!rowHasItems) return;
-
-        matchingRows++;
-
-        const cells = ["breakfast", "lunch", "dinner"].map(meal => {
-            const content = filteredMeals[meal].map(item => {
-                const icon = item.type === "veg" ? "🟢" : "🔴";
-                return `<span class="weekly-food">${icon} ${item.name}</span>`;
-            }).join("");
-
-            return `<td>${content || "—"}</td>`;
-        }).join("");
-
-        table += `
-            <tr>
-                <td class="weekly-day">
-                    ${date.toLocaleDateString("en-IN", { weekday: "short" })}<br>
-                    ${date.getDate()} ${date.toLocaleDateString("en-IN", { month: "short" })}
-                </td>
-                ${cells}
-            </tr>
-        `;
+    button.addEventListener("click", () => {
+      SAU.selectedDate = date;
+      renderCalendar();
+      renderSelectedMenu();
     });
 
-    table += "</tbody></table>";
-
-    if (matchingRows === 0) {
-        container.innerHTML = `
-            <div class="empty-state">
-                No matching food items found. Try another search or filter.
-            </div>
-        `;
-    } else {
-        container.innerHTML = table;
-    }
+    grid.appendChild(button);
+  }
 }
 
-const menuSearch = document.getElementById("menuSearch");
-const foodFilter = document.getElementById("foodFilter");
+function initCalendarControls() {
+  $("#prevMonth")?.addEventListener("click", () => {
+    SAU.calendarDate.setMonth(SAU.calendarDate.getMonth() - 1);
+    renderCalendar();
+  });
 
-if (menuSearch) {
-    menuSearch.addEventListener("input", renderWeeklyMenu);
-}
+  $("#nextMonth")?.addEventListener("click", () => {
+    SAU.calendarDate.setMonth(SAU.calendarDate.getMonth() + 1);
+    renderCalendar();
+  });
 
-if (foodFilter) {
-    foodFilter.addEventListener("change", renderWeeklyMenu);
-}
-
-
-/* 11. PRINT WEEKLY MENU */
-
-const printButton = document.getElementById("printWeek");
-
-if (printButton) {
-    printButton.addEventListener("click", () => {
-        window.print();
-    });
-}
-
-
-/* 12. FAVOURITES */
-
-function isFavourite(name) {
-    return favourites.includes(name);
-}
-
-function renderFavouriteCards() {
-    const container = document.getElementById("favouritesList");
-
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    if (favourites.length === 0) {
-        container.innerHTML = `
-            <div class="empty-state">
-                No favourites saved yet. Click the heart on a food item to save it.
-            </div>
-        `;
-        return;
-    }
-
-    const allFood = [];
-
-    Object.values(weeklyMenu).forEach(day => {
-        ["breakfast", "lunch", "dinner"].forEach(meal => {
-            day[meal].forEach(item => {
-                if (favourites.includes(item.name)) {
-                    const alreadyAdded = allFood.some(
-                        existing => existing.name === item.name
-                    );
-
-                    if (!alreadyAdded) {
-                        allFood.push(item);
-                    }
-                }
-            });
-        });
-    });
-
-    allFood.forEach(item => {
-        const card = document.createElement("article");
-        card.className = "meal-card";
-
-        const title = document.createElement("h3");
-        title.textContent = item.name;
-
-        const category = document.createElement("p");
-        category.textContent = item.type === "veg"
-            ? "🟢 Vegetarian"
-            : "🔴 Non-vegetarian";
-        category.className = "muted-text";
-
-        const removeButton = document.createElement("button");
-        removeButton.className = "favorite-button saved";
-        removeButton.type = "button";
-        removeButton.textContent = "♥ Remove favourite";
-
-        removeButton.addEventListener("click", () => {
-            toggleFavourite(item.name);
-        });
-
-        card.append(title, category, removeButton);
-        container.appendChild(card);
-    });
-}
-
-function toggleFavourite(name) {
-    if (isFavourite(name)) {
-        favourites = favourites.filter(item => item !== name);
-    } else {
-        favourites.push(name);
-    }
-
-    saveStorage("sauFavourites", favourites);
-
-    renderFavouriteCards();
+  $("#todayBtn")?.addEventListener("click", () => {
+    SAU.selectedDate = new Date();
+    SAU.calendarDate = new Date();
+    renderCalendar();
     renderSelectedMenu();
-    renderTodayMenu();
+  });
+
+  $("#printMenuBtn")?.addEventListener("click", () => window.print());
 }
 
+/* ==========================================================
+   MENU RENDERING
+   ========================================================== */
 
-/* Add favourite buttons to meal cards on the home page */
+function renderSelectedMenu() {
+  const heading = $("#selectedDateTitle");
+  if (heading) heading.textContent = formatDate(SAU.selectedDate);
 
-function addFavouriteControls() {
-    document.querySelectorAll(".meal-card").forEach(card => {
-        if (card.querySelector(".favorite-button")) return;
+  renderMenu();
+}
 
-        const title = card.querySelector("li");
+function renderMenu() {
+  const container = $("#menuMealsContainer");
+  if (!container) return;
 
-        if (!title) return;
+  const meals = getMenuForDate(SAU.selectedDate);
+  const favourites = getStored(SAU.storage.favourites, []);
+  const ratings = getStored(SAU.storage.ratings, {});
 
-        // The food name comes from the first food item in the card.
-        const firstItem = title.textContent.trim();
-        const name = firstItem.replace(/\s+/g, " ");
+  const order = ["breakfast", "lunch", "dinner"];
 
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "favorite-button";
-        button.textContent = isFavourite(name) ? "♥ Saved" : "♡ Save food";
+  let output = "";
 
-        if (isFavourite(name)) button.classList.add("saved");
+  order.forEach(mealKey => {
+    if (
+      SAU.activeMealFilter !== "all" &&
+      SAU.activeMealFilter !== mealKey
+    ) return;
 
-        button.addEventListener("click", () => {
-            toggleFavourite(name);
-        });
+    const dishes = meals[mealKey] || [];
 
-        card.appendChild(button);
+    const filtered = dishes.filter(dish => {
+      const matchesSearch = dish.name.toLowerCase().includes(SAU.searchText);
+      const favouriteKey = `${mealKey}:${dish.name}`;
+      const matchesFavourite = !SAU.favouritesOnly ||
+        favourites.includes(favouriteKey);
+
+      return matchesSearch && matchesFavourite;
     });
-}
 
+    if (!filtered.length) return;
 
-/* Create daily meal cards with favourite buttons */
+    output += `
+      <article class="meal-group">
+        <div class="meal-group-header">
+          <h3>${SAU.meals[mealKey].name}</h3>
+          <span>${filtered.length} items</span>
+        </div>
+        <ul class="dish-list">
+          ${filtered.map(dish => {
+            const favouriteKey = `${mealKey}:${dish.name}`;
+            const fav = favourites.includes(favouriteKey);
+            const rating = ratings[favouriteKey] || 0;
 
-function renderTodayMenuWithFavourites() {
-    const container = document.getElementById("todayMeals");
-    const dateElement = document.getElementById("todayDate");
+            return `
+              <li class="dish-item">
+                <span class="dish-type-dot ${dish.type === "nonveg" ? "nonveg" : "veg"}"></span>
+                <span class="dish-name">${escapeHTML(dish.name)}</span>
+                <button
+                  class="favourite-button ${fav ? "favourited" : ""}"
+                  data-favourite="${escapeHTML(favouriteKey)}"
+                  title="Add to favourites"
+                >${fav ? "♥" : "♡"}</button>
+              </li>
+              <div class="dish-rating">
+                Rate:
+                ${[1,2,3,4,5].map(star => `
+                  <button
+                    data-rating-key="${escapeHTML(favouriteKey)}"
+                    data-rating="${star}"
+                    class="${star <= rating ? "rated" : ""}"
+                    aria-label="Rate ${star} stars"
+                  >★</button>
+                `).join("")}
+              </div>
+            `;
+          }).join("")}
+        </ul>
+      </article>
+    `;
+  });
 
-    if (!container || !dateElement) return;
+  if (!output) {
+    container.innerHTML = `<div class="empty-state">No dishes match your search.</div>`;
+    return;
+  }
 
-    const currentDate = new Date();
-    const menu = getMenuForDate(currentDate);
+  container.innerHTML = output;
 
-    dateElement.textContent = formatDate(currentDate);
-    container.innerHTML = "";
+  container.querySelectorAll("[data-favourite]").forEach(button => {
+    button.addEventListener("click", () => toggleFavourite(button.dataset.favourite));
+  });
 
-    ["breakfast", "lunch", "dinner"].forEach(meal => {
-        const card = createMealCard(
-            formatDate(currentDate),
-            menu[meal],
-            currentDate,
-            meal
-        );
-
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "favorite-button";
-        button.textContent = "♡ Save a food item";
-        button.title = "Save the first food item in this meal";
-
-        button.addEventListener("click", () => {
-            const firstFood = menu[meal][0].name;
-            toggleFavourite(firstFood);
-            button.textContent = isFavourite(firstFood)
-                ? "♥ Saved: " + firstFood
-                : "♡ Save a food item";
-        });
-
-        card.appendChild(button);
-        container.appendChild(card);
+  container.querySelectorAll("[data-rating]").forEach(button => {
+    button.addEventListener("click", () => {
+      saveRating(button.dataset.ratingKey, Number(button.dataset.rating));
     });
+  });
 }
 
+function toggleFavourite(key) {
+  let favourites = getStored(SAU.storage.favourites, []);
 
-/* 13. FOOD RATINGS AND FEEDBACK */
+  if (favourites.includes(key)) {
+    favourites = favourites.filter(item => item !== key);
+    showToast("Removed from favourites");
+  } else {
+    favourites.push(key);
+    showToast("Added to favourites");
+  }
 
-function renderRatings() {
-    const container = document.getElementById("ratingList");
+  saveStored(SAU.storage.favourites, favourites);
+  renderMenu();
+}
 
-    if (!container) return;
+function saveRating(key, rating) {
+  const ratings = getStored(SAU.storage.ratings, {});
+  ratings[key] = rating;
 
-    container.innerHTML = "";
+  saveStored(SAU.storage.ratings, ratings);
+  renderMenu();
+  showToast("Thank you for rating!");
+}
 
-    if (ratings.length === 0) {
-        container.innerHTML = `
-            <div class="empty-state">
-                No ratings have been submitted in this browser yet.
-            </div>
-        `;
-        return;
+function initMenuControls() {
+  $$(".filter-button[data-meal-filter]").forEach(button => {
+    button.addEventListener("click", () => {
+      SAU.activeMealFilter = button.dataset.mealFilter;
+
+      $$(".filter-button[data-meal-filter]").forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+      SAU.favouritesOnly = false;
+      $("#favouritesFilter")?.classList.remove("active");
+      renderMenu();
+    });
+  });
+
+  $("#favouritesFilter")?.addEventListener("click", button => {
+    SAU.favouritesOnly = !SAU.favouritesOnly;
+    button.currentTarget.classList.toggle("active", SAU.favouritesOnly);
+    renderMenu();
+  });
+
+  $("#menuSearch")?.addEventListener("input", event => {
+    SAU.searchText = event.target.value.toLowerCase().trim();
+    renderMenu();
+  });
+}
+
+/* ==========================================================
+   ANNOUNCEMENTS
+   ========================================================== */
+
+function renderAnnouncements() {
+  const container = $("#announcementList");
+  if (!container) return;
+
+  const items = SAU.menu?.announcements || [];
+
+  if (!items.length) {
+    container.innerHTML = `
+      <div class="empty-state">
+        There are no announcements at the moment.
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = items.map(item => `
+    <article class="announcement-item">
+      <div class="announcement-icon">✦</div>
+      <div>
+        <h3>${escapeHTML(item.title)}</h3>
+        <p>${escapeHTML(item.message)}</p>
+        <time>${escapeHTML(item.date || "Campus update")}</time>
+      </div>
+    </article>
+  `).join("");
+}
+
+/* ==========================================================
+   FEEDBACK
+   ========================================================== */
+
+function initFeedbackForm() {
+  const form = $("#feedbackForm");
+  if (!form) return;
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const entry = {
+      name: $("#feedbackName").value.trim(),
+      rating: $("#feedbackRating").value,
+      message: $("#feedbackMessage").value.trim(),
+      date: new Date().toISOString()
+    };
+
+    const entries = getStored(SAU.storage.feedback, []);
+    entries.push(entry);
+    saveStored(SAU.storage.feedback, entries);
+
+    $("#feedbackStatus").textContent =
+      "Thank you! Your feedback has been saved.";
+
+    form.reset();
+    showToast("Feedback submitted");
+  });
+}
+
+/* ==========================================================
+   REGISTRATION
+   ========================================================== */
+
+function initRegistrationForm() {
+  const form = $("#registrationForm");
+  if (!form) return;
+
+  const success = $("#registrationSuccess");
+  success?.classList.add("hidden");
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const entry = {
+      name: $("#studentName").value.trim(),
+      studentId: $("#studentId").value.trim(),
+      email: $("#studentEmail").value.trim(),
+      phone: $("#studentPhone").value.trim(),
+      course: $("#studentCourse").value,
+      year: $("#studentYear").value,
+      diet: $("#studentDiet").value,
+      date: new Date().toISOString()
+    };
+
+    const entries = getStored(SAU.storage.registrations, []);
+    entries.push(entry);
+    saveStored(SAU.storage.registrations, entries);
+
+    form.classList.add("hidden");
+    success?.classList.remove("hidden");
+
+    showToast("Registration saved");
+  });
+
+  $("#registerAnother")?.addEventListener("click", () => {
+    form.reset();
+    form.classList.remove("hidden");
+    success?.classList.add("hidden");
+  });
+}
+
+/* ==========================================================
+   CONTACT FORM
+   ========================================================== */
+
+function initContactForm() {
+  const form = $("#contactForm");
+  if (!form) return;
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const message = {
+      name: $("#contactName").value.trim(),
+      email: $("#contactEmail").value.trim(),
+      subject: $("#contactSubject").value,
+      message: $("#contactMessage").value.trim(),
+      date: new Date().toISOString()
+    };
+
+    const entries = getStored(SAU.storage.contacts, []);
+    entries.push(message);
+    saveStored(SAU.storage.contacts, entries);
+
+    $("#contactStatus").textContent =
+      "Your message has been saved successfully.";
+
+    form.reset();
+    showToast("Message submitted");
+  });
+}
+
+/* ==========================================================
+   EVENTS PAGE
+   ========================================================== */
+
+const sampleEvents = [
+  {
+    title: "Community Dinner",
+    category: "Dining",
+    date: "2026-12-05",
+    description: "A proposed community dining evening for students.",
+    location: "University Dining Hall"
+  },
+  {
+    title: "Food Appreciation Week",
+    category: "Food",
+    date: "2026-12-10",
+    description: "Celebrate campus food, culture and shared experiences.",
+    location: "Campus"
+  },
+  {
+    title: "Student Suggestion Day",
+    category: "Student",
+    date: "2026-12-15",
+    description: "Share suggestions about campus dining services.",
+    location: "Mess Notice Area"
+  },
+  {
+    title: "Special Menu Day",
+    category: "Dining",
+    date: "2026-12-20",
+    description: "A proposed special dining menu day.",
+    location: "Dining Hall"
+  }
+];
+
+function initEventsPage() {
+  const grid = $("#eventsGrid");
+  if (!grid) return;
+
+  const filter = $("#eventFilter");
+
+  function renderEvents(category = "all") {
+    const events = sampleEvents.filter(event =>
+      category === "all" || event.category === category
+    );
+
+    if (!events.length) {
+      grid.innerHTML = `<div class="empty-state">No events found.</div>`;
+      return;
     }
 
-    ratings.slice().reverse().forEach(rating => {
-        const card = document.createElement("article");
-        card.className = "rating-entry";
+    grid.innerHTML = events.map(event => `
+      <article class="event-card">
+        <div class="event-card-body">
+          <span class="event-date-label">${escapeHTML(event.date)}</span>
+          <h3>${escapeHTML(event.title)}</h3>
+          <p>${escapeHTML(event.description)}</p>
+          <div class="event-meta">
+            <span>${escapeHTML(event.category)}</span>
+            <span>${escapeHTML(event.location)}</span>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  }
 
-        const title = document.createElement("strong");
-        title.textContent = rating.food;
+  filter?.addEventListener("change", () => renderEvents(filter.value));
+  renderEvents();
 
-        const stars = document.createElement("div");
-        stars.className = "rating-stars";
-        stars.textContent = "★".repeat(rating.score) +
-            "☆".repeat(5 - rating.score);
+  const year = $("#eventYear");
+  if (year) year.textContent = new Date().getFullYear();
+}
 
-        const comment = document.createElement("p");
-        comment.textContent = rating.comment || "No written feedback.";
+/* ==========================================================
+   FAQ — ASK A QUESTION
+   ========================================================== */
 
-        const date = document.createElement("p");
-        date.textContent = rating.date;
+function initFaqForm() {
+  const form = $("#faqQuestionForm");
+  if (!form) return;
 
-        card.append(title, stars, comment, date);
-        container.appendChild(card);
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const question = {
+      name: $("#questionName").value.trim(),
+      email: $("#questionEmail").value.trim(),
+      text: $("#questionText").value.trim(),
+      date: new Date().toISOString(),
+      status: "Pending"
+    };
+
+    const questions = getStored(SAU.storage.questions, []);
+    questions.push(question);
+    saveStored(SAU.storage.questions, questions);
+
+    $("#questionStatus").textContent =
+      "Your question has been recorded. It can be reviewed by the mess team.";
+
+    form.reset();
+    showToast("Question submitted");
+  });
+}
+
+/* ==========================================================
+   INITIALIZATION
+   ========================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  initShared();
+
+  if (document.body.dataset.page === "home") {
+    initCalendarControls();
+    initMenuControls();
+
+    SAU.selectedDate = new Date();
+    SAU.calendarDate = new Date();
+
+    updateNextMeal();
+    setInterval(updateNextMeal, 1000);
+
+    loadMenu();
+
+    
+/* ==========================================================
+   MESS MEMBERSHIP & DEMO APPLICATION
+   ========================================================== */
+
+function initMessCard() {
+  const page = document.body.dataset.page;
+  if (page !== "mess-card") return;
+
+  const onlinePanel = $("#onlineApplication");
+  const paymentPanel = $("#demoPayment");
+  const offlinePanel = $("#offlineApplication");
+
+  let selectedPlan = "Vegetarian";
+  let selectedPrice = 3400;
+
+  function openOnlineForm() {
+    onlinePanel?.classList.remove("hidden");
+    paymentPanel?.classList.add("hidden");
+
+    if ($("#onlinePlan")) {
+      $("#onlinePlan").value = selectedPlan;
+    }
+
+    onlinePanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function showDemoPayment(plan, price) {
+    if (paymentPanel) {
+      paymentPanel.classList.remove("hidden");
+    }
+
+    if ($("#paymentPlanText")) {
+      $("#paymentPlanText").textContent =
+        `${plan} mess membership application`;
+    }
+
+    if ($("#paymentAmount")) {
+      $("#paymentAmount").textContent = `₹${Number(price).toLocaleString("en-IN")}`;
+    }
+
+    paymentPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  $$(".choosePlan").forEach(button => {
+    button.addEventListener("click", () => {
+      selectedPlan = button.dataset.plan;
+      selectedPrice = Number(button.dataset.price);
+
+      openOnlineForm();
     });
+  });
+
+  $("#onlinePaymentBtn")?.addEventListener("click", openOnlineForm);
+
+  $("#closeOnlineForm")?.addEventListener("click", () => {
+    onlinePanel?.classList.add("hidden");
+  });
+
+  $("#onlinePlan")?.addEventListener("change", event => {
+    const plan = event.target.value;
+
+    selectedPlan = plan;
+    selectedPrice = plan === "Non-Vegetarian" ? 3800 : 3400;
+  });
+
+  $("#messOnlineForm")?.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const plan = $("#onlinePlan").value;
+    const price = plan === "Non-Vegetarian" ? 3800 : 3400;
+
+    const application = {
+      name: $("#onlineName").value.trim(),
+      studentId: $("#onlineStudentId").value.trim(),
+      email: $("#onlineEmail").value.trim(),
+      course: $("#onlineCourse").value.trim(),
+      plan,
+      amount: price,
+      mode: "Online Demo",
+      createdAt: new Date().toISOString()
+    };
+
+    const applications = getStored("sauMessApplications", []);
+    applications.push(application);
+
+    saveStored("sauMessApplications", applications);
+
+    selectedPlan = plan;
+    selectedPrice = price;
+
+    $("#onlineFormStatus").textContent = "Application saved successfully.";
+    showDemoPayment(plan, price);
+    showToast("Application saved");
+  });
+
+  $("#paymentDoneBtn")?.addEventListener("click", () => {
+    paymentPanel?.classList.add("hidden");
+    onlinePanel?.classList.add("hidden");
+    showToast("Demo payment screen closed");
+  });
+
+  $("#messOfflineForm")?.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const application = {
+      name: $("#offlineName").value.trim(),
+      studentId: $("#offlineStudentId").value.trim(),
+      phone: $("#offlinePhone").value.trim(),
+      course: $("#offlineCourse").value.trim(),
+      plan: $("#offlinePlan").value,
+      amount: $("#offlinePlan").value === "Non-Vegetarian" ? 3800 : 3400,
+      mode: "Offline",
+      createdAt: new Date().toISOString()
+    };
+
+    const applications = getStored("sauMessApplications", []);
+    applications.push(application);
+
+    saveStored("sauMessApplications", applications);
+
+    $("#offlineStatus").textContent =
+      "Your offline application details have been saved in this demo. Please visit the mess manager to complete the actual process.";
+
+    event.target.reset();
+    showToast("Offline application saved");
+  });
 }
 
-const ratingForm = document.getElementById("ratingForm");
-
-if (ratingForm) {
-    ratingForm.addEventListener("submit", event => {
-        event.preventDefault();
-
-        const food = document.getElementById("ratingFood").value.trim();
-        const score = Number(document.getElementById("ratingScore").value);
-        const comment = document.getElementById("ratingComment").value.trim();
-        const message = document.getElementById("ratingMessage");
-
-        if (!food || score < 1 || score > 5) {
-            message.textContent = "Please enter a food item and select a rating.";
-            message.className = "form-message error";
-            return;
-        }
-
-        ratings.push({
-            food,
-            score,
-            comment,
-            date: new Date().toLocaleDateString("en-IN")
-        });
-
-        saveStorage("sauRatings", ratings);
-
-        message.textContent = "Thank you! Your rating has been saved in this browser.";
-        message.className = "form-message success";
-
-        ratingForm.reset();
-        renderRatings();
-    });
-}
-
-
-/* 14. ANNOUNCEMENTS */
-
-function renderAnnouncements(containerId) {
-    const container = document.getElementById(containerId);
-
-    if (!container) return;
-
-    container.innerHTML = "";
-
-    announcements.forEach(item => {
-        const card = document.createElement("article");
-        card.className = "announcement-card";
-
-        const date = document.createElement("span");
-        date.className = "announcement-date";
-        date.textContent = item.date;
-
-        const title = document.createElement("h3");
-        title.textContent = item.title;
-
-        const message = document.createElement("p");
-        message.textContent = item.message;
-
-        card.append(date, title, message);
-        container.appendChild(card);
-    });
-}
-
-
-/* 15. DARK AND LIGHT MODE */
-
-const themeButton = document.getElementById("themeToggle");
-
-function updateThemeButton() {
-    if (!themeButton) return;
-
-    themeButton.textContent = document.body.classList.contains("dark-mode")
-        ? "☀️ Light Mode"
-        : "🌙 Dark Mode";
-}
-
-const savedTheme = localStorage.getItem("sauTheme");
-
-if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-}
-
-updateThemeButton();
-
-if (themeButton) {
-    themeButton.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-
-        const theme = document.body.classList.contains("dark-mode")
-            ? "dark"
-            : "light";
-
-        localStorage.setItem("sauTheme", theme);
-        updateThemeButton();
-    });
-}
-
-
-/* 16. MOBILE NAVIGATION */
-
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
-
-if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
-    });
-}
-
-
-/* 17. REGISTRATION FORM VALIDATION */
-
-const registrationForm = document.getElementById("registrationForm");
-
-if (registrationForm) {
-    registrationForm.addEventListener("submit", event => {
-        event.preventDefault();
-
-        const phone = document.getElementById("studentPhone").value.trim();
-        const message = document.getElementById("registrationMessage");
-
-        if (!/^[0-9]{10}$/.test(phone)) {
-            message.textContent = "Please enter a valid 10-digit phone number.";
-            message.className = "form-message error";
-            return;
-        }
-
-        message.textContent =
-            "Registration form completed successfully! This is a demonstration; no data was sent.";
-        message.className = "form-message success";
-
-        registrationForm.reset();
-    });
-}
-
-
-/* 18. CONTACT FORM VALIDATION */
-
-const contactForm = document.getElementById("contactForm");
-
-if (contactForm) {
-    contactForm.addEventListener("submit", event => {
-        event.preventDefault();
-
-        const message = document.getElementById("contactResponse");
-
-        message.textContent =
-            "Thank you for your message! This demonstration does not send messages to a server.";
-        message.className = "form-message success";
-
-        contactForm.reset();
-    });
-}
-
-
-/* 19. FOOTER YEAR */
-
-document.querySelectorAll(".current-year").forEach(element => {
-    element.textContent = new Date().getFullYear();
+  }
 });
-
-
-/* 20. INITIALISE WEBSITE FEATURES */
-
-renderTodayMenuWithFavourites();
-renderCalendar();
-renderSelectedMenu();
-renderWeeklyMenu();
-renderFavouriteCards();
-renderRatings();
-renderAnnouncements("announcementList");
-renderAnnouncements("homeAnnouncements");

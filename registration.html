@@ -2,106 +2,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration | SAU Mess Menu</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Registration | SAU Dining</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-
-<header class="site-header">
-    <nav class="navbar container">
-        <a href="index.html" class="logo">SAU<span>Mess</span></a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="events.html">Food Calendar</a>
-            <a class="active" href="registration.html">Registration</a>
-            <a href="contact.html">Contact</a>
-            <button class="theme-toggle" id="themeToggle" type="button">🌙 Dark Mode</button>
-        </div>
-    </nav>
+<body data-page="registration">
+<div class="site-shell">
+<header class="topbar">
+<a href="index.html" class="brand">
+<span class="brand-mark">S</span>
+<span class="brand-text"><strong>SAU DINING</strong><small>Campus Food & Services</small></span>
+</a>
+<button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+<nav class="main-nav" id="mainNav">
+<a class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="index.html#menuSection">Menu</a>
+<a class="nav-link" href="events.html">Events</a>
+<a class="nav-link" href="mess-card.html">Mess Card</a>
+<a class="nav-link" href="committee.html">Committee</a>
+<a class="nav-link" href="faq.html">Help</a>
+</nav>
 </header>
 
-<main class="container page-main">
-    <section class="page-heading">
-        <span class="eyebrow">STUDENT SERVICES</span>
-        <h1>Mess Registration</h1>
-        <p>Fill in the details below to complete the sample registration form.</p>
-    </section>
+<section class="page-hero">
+<span class="eyebrow">STUDENT SERVICES</span>
+<h1>Student registration.</h1>
+<p>Complete your student details for this dining website demonstration.</p>
+</section>
 
-    <section class="form-section">
-        <form id="registrationForm" class="panel form-card">
-            <h2>Student Information</h2>
+<main class="page-content">
+<div class="content-card" style="max-width:760px;margin:auto">
+<form id="registrationForm" class="standard-form">
 
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="studentName">Full Name</label>
-                    <input type="text" id="studentName" placeholder="Enter your name" required>
-                </div>
+<label for="studentName">Full name</label>
+<input id="studentName" required placeholder="Your full name">
 
-                <div class="form-group">
-                    <label for="studentEmail">University Email</label>
-                    <input type="email" id="studentEmail" placeholder="Enter your email" required>
-                </div>
+<label for="studentId">Student ID</label>
+<input id="studentId" required placeholder="Your student ID">
 
-                <div class="form-group">
-                    <label for="studentId">Student ID</label>
-                    <input type="text" id="studentId" placeholder="Enter your student ID" required>
-                </div>
+<label for="studentEmail">Email</label>
+<input id="studentEmail" type="email" required placeholder="Your email address">
 
-                <div class="form-group">
-                    <label for="studentCourse">Course / Department</label>
-                    <input type="text" id="studentCourse" placeholder="Enter your course" required>
-                </div>
+<label for="studentPhone">Phone</label>
+<input id="studentPhone" type="tel" required placeholder="Contact number">
 
-                <div class="form-group">
-                    <label for="studentPhone">Phone Number</label>
-                    <input type="tel" id="studentPhone" placeholder="Enter phone number"
-                           pattern="[0-9]{10}" maxlength="10" required>
-                </div>
+<label for="studentCourse">Course / Department</label>
+<select id="studentCourse" required>
+<option value="">Select course</option>
+<option>B.Tech</option>
+<option>M.Tech</option>
+<option>M.Sc.</option>
+<option>MA</option>
+<option>PhD</option>
+<option>Other</option>
+</select>
 
-                <div class="form-group">
-                    <label for="foodPreference">Food Preference</label>
-                    <select id="foodPreference" required>
-                        <option value="">Select preference</option>
-                        <option value="Vegetarian">Vegetarian</option>
-                        <option value="Non-vegetarian">Non-vegetarian</option>
-                        <option value="Both">Both</option>
-                    </select>
-                </div>
-            </div>
+<label for="studentYear">Academic year</label>
+<select id="studentYear" required>
+<option value="">Select year</option>
+<option>First Year</option>
+<option>Second Year</option>
+<option>Third Year</option>
+<option>Fourth Year</option>
+<option>Other</option>
+</select>
 
-            <label class="checkbox-label">
-                <input type="checkbox" id="registrationConsent" required>
-                I confirm that the information entered is correct.
-            </label>
+<label for="studentDiet">Food preference</label>
+<select id="studentDiet" required>
+<option value="">Select preference</option>
+<option>Vegetarian</option>
+<option>Non-Vegetarian</option>
+<option>Other</option>
+</select>
 
-            <button type="submit" class="btn btn-primary">Submit Registration</button>
-            <p id="registrationMessage" class="form-message" aria-live="polite"></p>
+<label style="display:flex;align-items:flex-start;gap:9px">
+<input type="checkbox" id="registrationConsent" required style="width:auto">
+<span>I confirm that the details provided are correct.</span>
+</label>
 
-            <p class="small-note">
-                Demonstration only: this form does not send or store student details.
-            </p>
-        </form>
-    </section>
+<button class="button button-primary button-full" type="submit">Submit Registration</button>
+</form>
+
+<div id="registrationSuccess" class="registration-success hidden">
+<h3>Registration saved!</h3>
+<p>Your demo registration has been recorded on this browser.</p>
+<button id="registerAnother" class="button button-outline" style="margin-top:15px">Register another student</button>
+</div>
+</div>
 </main>
 
 <footer class="site-footer">
-    <div class="container footer-content">
-        <div>
-            <a href="index.html" class="logo footer-logo">SAU<span>Mess</span></a>
-            <p>A student-friendly mess menu information portal.</p>
-        </div>
-        <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="events.html">Food Calendar</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </div>
-    <p class="copyright">© <span class="current-year"></span> SAU Mess Menu. Student Project.</p>
+<div class="footer-main">
+<div class="footer-brand"><a href="index.html" class="brand"><span class="brand-mark">S</span><span class="brand-text"><strong>SAU DINING</strong><small>Campus Food & Services</small></span></a><p>A better dining experience for our campus community.</p></div>
+<div class="footer-links"><strong>Explore</strong><a href="index.html">Home</a><a href="events.html">Events</a><a href="mess-card.html">Mess Card</a></div>
+<div class="footer-links"><strong>Support</strong><a href="committee.html">Committee</a><a href="faq.html">FAQs</a><a href="contacts.html">Contact</a></div>
+</div>
+<div class="footer-bottom"><span>© 2026 SAU Dining</span><span>Student project</span></div>
 </footer>
-
+</div>
+<div id="toastContainer" class="toast-container"></div>
+<script src="assets/js/script.js"></script>
 </body>
 </html>

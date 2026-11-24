@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQs | SAU Dining</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="faq">
+<div class="site-shell">
+<header class="topbar">
+<a href="index.html" class="brand">
+<span class="brand-mark">S</span>
+<span class="brand-text"><strong>SAU DINING</strong><small>Campus Food & Services</small></span>
+</a>
+<button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+<nav class="main-nav" id="mainNav">
+<a class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="index.html#menuSection">Menu</a>
+<a class="nav-link" href="events.html">Events</a>
+<a class="nav-link" href="mess-card.html">Mess Card</a>
+<a class="nav-link" href="committee.html">Committee</a>
+<a class="nav-link active" href="faq.html">Help</a>
+</nav>
+<div class="header-actions">
+<a href="contacts.html" class="button button-primary button-small">Contact Us</a>
+</div>
+</header>
+
+<section class="page-hero">
+<span class="eyebrow">STUDENT HELP CENTER</span>
+<h1>Questions?<br>We've got answers.</h1>
+<p>Find useful information about meal timings, menus, membership and dining services.</p>
+</section>
+
+<main class="page-content">
+
+<section>
+<span class="faq-category">DINING & TIMINGS</span>
+<div class="faq-list">
+
+<details class="faq-item">
+<summary>1. What are the timings of breakfast, lunch and dinner?</summary>
+<div class="faq-answer">
+<p>Breakfast is served from 8:30 AM to 10:30 AM, lunch from 12:30 PM to 2:30 PM and dinner from 7:30 PM to 9:30 PM, according to the demonstration schedule on this website.</p>
+<p>Students should check official mess notices if timings change.</p>
+</div>
+</details>
+
+<details class="faq-item">
+<summary>2. Where can I check the daily mess menu?</summary>
+<div class="faq-answer">
+<p>Open the Home page and go to the Menu section. You can use the calendar to select a date and view breakfast, lunch and dinner planned for that day.</p>
+<p>You can also use the dish search and meal filters to quickly find menu items.</p>
+</div>
+</details>
+
+<details class="faq-item">
+<summary>3. Can the mess menu change during the month?</summary>
+<div class="faq-answer">
+<p>Yes. Menu items may change due to availability, operational requirements or other circumstances. The menu displayed on this website is a project demonstration and should not replace official mess notices.</p>
+</div>
+</details>
+
+<details class="faq-item">
+<summary>4. How can I identify vegetarian and non-vegetarian dishes?</summary>
+<div class="faq-answer">
+<p>Each dish has a small category marker. A green marker indicates vegetarian dishes and a red marker indicates non-vegetarian dishes in the current menu display.</p>
+</div>
+</details>
+
+<span class="faq-category">MEMBERSHIP & PAYMENTS</span>
+
+<details class="faq-item">
+<summary>5. What is the monthly mess membership price?</summary>
+<div class="faq-answer">
+<p>The illustrative monthly membership rates displayed on this website are ₹3,400 for the vegetarian plan and ₹3,800 for the non-vegetarian plan.</p>
+<p>These amounts are demonstration rates and should be verified with mess management before making any payment.</p>
+</div>
+</details>
+
+<details class="faq-item">
+<summary>6. How can I apply for a mess card online?</summary>
+<div class="faq-answer">
+<p>Open the Mess Card page, select your plan and fill in your name, student ID, email and course details. The website then displays a simulated payment screen for demonstration purposes.</p>
+<p>This version does not process actual payments or issue official mess cards.</p>
+</div>
+</details>
+
+<details class="faq-item">
+<summary>7. Can I apply for a mess card offline?</summary>
+<div class="faq-answer">
+<p>Yes, the demonstration process is to visit the mess manager, provide your student details, select a membership plan and complete payment through the officially available method.</p>
+<p>After verification, ask the mess manager about membership confirmation and card collection.</p>
+</div>
+</details>
+
+<span class="faq-category">STUDENT SUPPORT</span>
+
+<details class="faq-item">
+<summary>8. Where can I share feedback about food or dining services?</summary>
+<div class="faq-answer">
+<p>Use the feedback form on the homepage. You can share your experience, rate it and suggest changes.</p>
+<p>In this demo version, feedback is stored locally in the browser and is not automatically delivered to the mess administration.</p>
+</div>
+</details>
+
+<details class="faq-item">
+<summary>9. Who can I contact for a mess-related concern?</summary>
+<div class="faq-answer">
+<p>You can visit the Contacts page to use the student support form. You can also approach the mess manager or the relevant committee representative in person.</p>
+<p>Actual official contact details should be added once confirmed.</p>
+</div>
+</details>
+
+<details class="faq-item">
+<summary>10. What should I do if my question is not listed here?</summary>
+<div class="faq-answer">
+<p>Scroll down to the Ask a Question section. Enter your name, email and query. Your question will be saved locally in this demonstration website.</p>
+<p>For an urgent real-life issue, contact the appropriate university or mess official directly.</p>
+</div>
+</details>
+</div>
+</section>
+
+<section>
+<div class="feedback-layout">
+<div class="feedback-copy">
+<span class="eyebrow">ASK THE MESS TEAM</span>
+<h2>Didn't find<br>your answer?</h2>
+<p>Submit your question below. This demo saves questions locally for review.</p>
+</div>
+
+<form id="faqQuestionForm" class="feedback-form">
+<label for="questionName">Your name</label>
+<input id="questionName" required placeholder="Enter your name">
+
+<label for="questionEmail">Email address</label>
+<input id="questionEmail" type="email" required placeholder="Enter your email">
+
+<label for="questionText">Your question</label>
+<textarea id="questionText" rows="5" required placeholder="Ask your question here..."></textarea>
+
+<button type="submit" class="button button-primary button-full">Submit Question</button>
+<p class="form-status" id="questionStatus"></p>
+</form>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="footer-main">
+<div class="footer-brand">
+<a href="index.html" class="brand"><span class="brand-mark">S</span><span class="brand-text"><strong>SAU DINING</strong><small>Campus Food & Services</small></span></a>
+<p>A better dining experience for our campus community.</p>
+</div>
+<div class="footer-links"><strong>Explore</strong><a href="index.html">Home</a><a href="events.html">Events</a><a href="mess-card.html">Mess Card</a></div>
+<div class="footer-links"><strong>Support</strong><a href="committee.html">Committee</a><a href="contacts.html">Contact</a><a href="registration.html">Registration</a></div>
+</div>
+<div class="footer-bottom"><span>© 2026 SAU Dining</span><span>Student project</span></div>
+</footer>
+</div>
+<div id="toastContainer" class="toast-container"></div>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

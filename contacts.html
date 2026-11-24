@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | SAU Dining</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="contact">
+<div class="site-shell">
+<header class="topbar">
+<a href="index.html" class="brand">
+<span class="brand-mark">S</span>
+<span class="brand-text"><strong>SAU DINING</strong><small>Campus Food & Services</small></span>
+</a>
+<button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+<nav class="main-nav" id="mainNav">
+<a class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="index.html#menuSection">Menu</a>
+<a class="nav-link" href="events.html">Events</a>
+<a class="nav-link" href="mess-card.html">Mess Card</a>
+<a class="nav-link" href="committee.html">Committee</a>
+<a class="nav-link" href="faq.html">Help</a>
+</nav>
+</header>
+
+<section class="page-hero">
+<span class="eyebrow">STUDENT SUPPORT</span>
+<h1>We're here<br>to listen.</h1>
+<p>Have a question, suggestion or concern about dining? Let us know.</p>
+</section>
+
+<main class="page-content">
+<div class="contact-grid">
+
+<div class="content-card">
+<span class="eyebrow">GET IN TOUCH</span>
+<h2 style="font-family:var(--heading);color:var(--navy);margin-bottom:15px">Dining support</h2>
+
+<div class="contact-detail">
+<div class="card-icon">⌂</div>
+<div><strong>Mess Manager</strong><p>For meal services, membership and operational queries.</p></div>
+</div>
+
+<div class="contact-detail">
+<div class="card-icon">◎</div>
+<div><strong>Mess Committee</strong><p>For student suggestions and dining concerns.</p></div>
+</div>
+
+<div class="contact-detail">
+<div class="card-icon">?</div>
+<div><strong>Help Centre</strong><p>Visit our FAQ page for common questions.</p><a href="faq.html" style="color:var(--primary);font-size:12px">Explore FAQs ↗</a></div>
+</div>
+
+<div class="contact-detail">
+<div class="card-icon">✉</div>
+<div><strong>Contact details</strong><p>Official contact information can be added after confirmation by the university.</p></div>
+</div>
+</div>
+
+<div class="content-card">
+<span class="eyebrow">SEND A MESSAGE</span>
+<h2 style="font-family:var(--heading);color:var(--navy);margin-bottom:20px">Contact form</h2>
+
+<form id="contactForm" class="standard-form">
+<label for="contactName">Your name</label>
+<input id="contactName" required placeholder="Full name">
+
+<label for="contactEmail">Email address</label>
+<input id="contactEmail" type="email" required placeholder="Email">
+
+<label for="contactSubject">Subject</label>
+<select id="contactSubject" required>
+<option value="">Choose a subject</option>
+<option>Menu query</option>
+<option>Mess membership</option>
+<option>Food feedback</option>
+<option>Dining facility</option>
+<option>Other</option>
+</select>
+
+<label for="contactMessage">Message</label>
+<textarea id="contactMessage" rows="5" required placeholder="Write your message..."></textarea>
+
+<button class="button button-primary button-full" type="submit">Submit message</button>
+<p class="form-status" id="contactStatus"></p>
+</form>
+</div>
+
+</div>
+</main>
+
+<footer class="site-footer">
+<div class="footer-main">
+<div class="footer-brand"><a href="index.html" class="brand"><span class="brand-mark">S</span><span class="brand-text"><strong>SAU DINING</strong><small>Campus Food & Services</small></span></a><p>A better dining experience for our campus community.</p></div>
+<div class="footer-links"><strong>Explore</strong><a href="index.html">Home</a><a href="events.html">Events</a><a href="mess-card.html">Mess Card</a></div>
+<div class="footer-links"><strong>Support</strong><a href="committee.html">Committee</a><a href="faq.html">FAQs</a><a href="registration.html">Registration</a></div>
+</div>
+<div class="footer-bottom"><span>© 2026 SAU Dining</span><span>Student project</span></div>
+</footer>
+</div>
+<div id="toastContainer" class="toast-container"></div>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

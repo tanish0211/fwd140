@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mess Membership | SAU Dining</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="mess-card">
+
+<div class="site-shell">
+<header class="topbar">
+<a href="index.html" class="brand">
+<span class="brand-mark">S</span>
+<span class="brand-text"><strong>SAU DINING</strong><small>Campus Food & Services</small></span>
+</a>
+<button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+<nav class="main-nav" id="mainNav">
+<a class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="index.html#menuSection">Menu</a>
+<a class="nav-link" href="events.html">Events</a>
+<a class="nav-link active" href="mess-card.html">Mess Card</a>
+<a class="nav-link" href="virtual-card.html">Virtual Card</a>
+<a class="nav-link" href="committee.html">Committee</a>
+<a class="nav-link" href="faq.html">Help</a>
+</nav>
+<div class="header-actions">
+<a href="admin.html" class="button button-outline button-small">Admin</a>
+</div>
+</header>
+
+<section class="page-hero">
+<span class="eyebrow">CAMPUS DINING MEMBERSHIP</span>
+<h1>Your monthly meals,<br>one simple plan.</h1>
+<p>Choose a dining plan and complete the membership process online or in person.</p>
+</section>
+
+<main class="page-content">
+
+<section>
+<div class="section-heading">
+<div>
+<span class="eyebrow">MONTHLY PLANS</span>
+<h2>Choose your dining plan</h2>
+<p>Illustrative project rates. Verify actual university prices before use.</p>
+</div>
+</div>
+
+<div class="card-grid two-column">
+<article class="plan-card">
+<span class="plan-label">VEGETARIAN PLAN</span>
+<h3>Veg Mess Membership</h3>
+<div class="plan-price">₹3,400 <small>/ month</small></div>
+<ul class="plan-features">
+<li>Monthly vegetarian mess plan</li>
+<li>Dining access as per applicable mess schedule</li>
+<li>Student membership registration</li>
+<li>Menu access through SAU Dining</li>
+</ul>
+<button class="button button-primary button-full choosePlan" data-plan="Vegetarian" data-price="3400">Select Vegetarian Plan</button>
+</article>
+
+<article class="plan-card recommended">
+<span class="plan-label">NON-VEGETARIAN PLAN</span>
+<h3>Non-Veg Mess Membership</h3>
+<div class="plan-price">₹3,800 <small>/ month</small></div>
+<ul class="plan-features">
+<li>Monthly non-vegetarian mess plan</li>
+<li>Dining access as per applicable mess schedule</li>
+<li>Student membership registration</li>
+<li>Menu access through SAU Dining</li>
+</ul>
+<button class="button button-primary button-full choosePlan" data-plan="Non-Vegetarian" data-price="3800">Select Non-Vegetarian Plan</button>
+</article>
+</div>
+</section>
+
+<section>
+<div class="section-heading">
+<div>
+<span class="eyebrow">HOW TO APPLY</span>
+<h2>Two ways to get your mess card</h2>
+</div>
+</div>
+
+<div class="card-grid two-column">
+<article class="payment-method-card">
+<div class="card-icon">↗</div>
+<h3>Online application</h3>
+<p>Submit your student details, select your plan and follow the demo payment steps.</p>
+<div class="steps-list">
+<div class="step-item"><span class="step-number">1</span><div><h4>Choose your plan</h4><p>Select vegetarian or non-vegetarian membership.</p></div></div>
+<div class="step-item"><span class="step-number">2</span><div><h4>Fill in the application</h4><p>Enter your student details and confirm your plan.</p></div></div>
+<div class="step-item"><span class="step-number">3</span><div><h4>Proceed to demo payment</h4><p>View the simulated QR payment screen.</p></div></div>
+<div class="step-item"><span class="step-number">4</span><div><h4>Contact the mess manager</h4><p>Present your application details for verification.</p></div></div>
+</div>
+<button class="button button-primary button-full" id="onlinePaymentBtn">Apply Online</button>
+</article>
+
+<article class="payment-method-card">
+<div class="card-icon">⌂</div>
+<h3>Offline application</h3>
+<p>Visit the mess manager in person to complete your membership.</p>
+<div class="steps-list">
+<div class="step-item"><span class="step-number">1</span><div><h4>Visit the mess manager</h4><p>Go to the designated mess management office.</p></div></div>
+<div class="step-item"><span class="step-number">2</span><div><h4>Provide your details</h4><p>Submit your name, student ID, course and selected plan.</p></div></div>
+<div class="step-item"><span class="step-number">3</span><div><h4>Pay your membership amount</h4><p>Complete payment through the official offline method available.</p></div></div>
+<div class="step-item"><span class="step-number">4</span><div><h4>Collect or confirm your card</h4><p>Ask the mess manager about card activation and collection.</p></div></div>
+</div>
+<a href="#offlineApplication" class="button button-outline button-full">Fill Offline Details</a>
+</article>
+</div>
+</section>
+
+<!-- ONLINE APPLICATION -->
+<section id="onlineApplication" class="content-card hidden">
+<div class="section-heading">
+<div>
+<span class="eyebrow">ONLINE REGISTRATION</span>
+<h2>Membership application</h2>
+</div>
+<button class="icon-button" id="closeOnlineForm">×</button>
+</div>
+
+<form id="messOnlineForm" class="standard-form">
+<label for="onlineName">Full name</label>
+<input id="onlineName" required>
+
+<label for="onlineStudentId">Student ID</label>
+<input id="onlineStudentId" required>
+
+<label for="onlineEmail">Email address</label>
+<input id="onlineEmail" type="email" required>
+
+<label for="onlineCourse">Course / Department</label>
+<input id="onlineCourse" required>
+
+<label for="onlinePlan">Selected plan</label>
+<select id="onlinePlan" required>
+<option value="">Select a plan</option>
+<option value="Vegetarian">Vegetarian — ₹3,400</option>
+<option value="Non-Vegetarian">Non-Vegetarian — ₹3,800</option>
+</select>
+
+<button type="submit" class="button button-primary button-full">Submit application & show demo QR</button>
+<p class="form-status" id="onlineFormStatus"></p>
+</form>
+</section>
+
+<!-- DEMO PAYMENT SCREEN -->
+<section id="demoPayment" class="content-card hidden">
+<div class="section-heading">
+<div>
+<span class="eyebrow">DEMO PAYMENT</span>
+<h2>Payment preview</h2>
+</div>
+</div>
+
+<div style="text-align:center">
+<p id="paymentPlanText"></p>
+<div class="qr-demo" aria-label="Illustrative QR code, not a real payment QR"></div>
+<strong id="paymentAmount" style="font-size:26px;color:var(--navy)"></strong>
+<p style="font-size:12px;color:var(--muted);margin-top:8px">
+This QR is illustrative only and cannot process payments.
+</p>
+</div>
+<div class="content-card" style="margin-top:20px">
+<h3>Next steps</h3>
+<p style="color:var(--muted);font-size:13px">
+Save your application details and contact the mess manager for
+verification. This website does not collect or process real payments.
+</p>
+<button id="paymentDoneBtn" class="button button-outline">Back to Membership</button>
+</div>
+</section>
+
+<!-- OFFLINE APPLICATION -->
+<section id="offlineApplication" class="content-card">
+<div class="section-heading">
+<div>
+<span class="eyebrow">OFFLINE MEMBERSHIP</span>
+<h2>Prepare your details</h2>
+<p>Fill this form before visiting the mess manager.</p>
+</div>
+</div>
+
+<form id="messOfflineForm" class="standard-form">
+<label for="offlineName">Full name</label>
+<input id="offlineName" required>
+
+<label for="offlineStudentId">Student ID</label>
+<input id="offlineStudentId" required>
+
+<label for="offlinePhone">Contact number</label>
+<input id="offlinePhone" type="tel" required>
+
+<label for="offlineCourse">Course / Department</label>
+<input id="offlineCourse" required>
+
+<label for="offlinePlan">Membership type</label>
+<select id="offlinePlan" required>
+<option value="">Select membership</option>
+<option value="Vegetarian">Vegetarian — ₹3,400</option>
+<option value="Non-Vegetarian">Non-Vegetarian — ₹3,800</option>
+</select>
+
+<button class="button button-primary" type="submit">Save offline application</button>
+<p id="offlineStatus" class="form-status"></p>
+</form>
+</section>
+
+<section>
+<div class="content-card">
+<h3>Important information</h3>
+<ul class="plan-features">
+<li>Membership prices shown are project demonstration values.</li>
+<li>Payment is not processed by this website.</li>
+<li>Students should verify the applicable plan with mess management.</li>
+<li>Keep your student ID available during verification.</li>
+<li>Do not enter sensitive banking information on this demo website.</li>
+</ul>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="footer-main">
+<div class="footer-brand">
+<a href="index.html" class="brand"><span class="brand-mark">S</span><span class="brand-text"><strong>SAU DINING</strong><small>Campus Food & Services</small></span></a>
+<p>A better dining experience for our campus community.</p>
+</div>
+<div class="footer-links">
+<strong>Explore</strong>
+<a href="index.html">Home</a>
+<a href="events.html">Events</a>
+<a href="committee.html">Committee</a>
+</div>
+<div class="footer-links">
+<strong>Support</strong>
+<a href="faq.html">FAQs</a>
+<a href="contacts.html">Contact</a>
+<a href="admin.html">Admin</a>
+</div>
+</div>
+<div class="footer-bottom"><span>© 2026 SAU Dining</span><span>Student project</span></div>
+</footer>
+</div>
+
+<div id="toastContainer" class="toast-container"></div>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
